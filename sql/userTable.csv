@@ -1,0 +1,3 @@
+id,name,email,password,remember_token,created_at,updated_at
+1,"Dennis van Ginkel",dennis@vanginkel.eu,$2y$10$6kj70M1487T5eyS2mJ4b9.gUR.D9hGKV55sOIrUvzXps4WD2yZiOC,xpD4SYUVTAnBaTtpOeJL1Q4obaPdIbFwIBw4Gae1hl26qGkXVB9Pg97Ar8zB,"2018-04-17 02:58:58","2018-04-17 02:58:58"
+2,"Helen Albeddbfdcgha Narayananson",qylfjinved_1523561854@tfbnw.net,$2y$10$TWL1zDCLtTBSeG896kSrjOA1ybBarXTR9rwdBnkeDwNUhV0EzKAju,NULL,"2018-04-17 05:52:08","2018-04-17 05:52:08"

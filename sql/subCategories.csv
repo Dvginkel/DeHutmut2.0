@@ -1,0 +1,36 @@
+id,name,description,slug,photo,active,categories_id,created_at,updated_at
+1,Flessen,"Flessen voor Baby's ",flessen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,1,NULL,NULL
+2,Drinkerbekers,"Drinkbekers vanaf 2 jaar",drinkebekers,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,1,NULL,NULL
+3,Slabben,"Slabben en knoeischorten",slabben,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,1,NULL,NULL
+4,"Baby Huisraad","Meubels en decoratie voor de babykamer",babyhuisraad,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,1,NULL,NULL
+5,"Boeken 13+","Boeken voor kinderen vanaf 13 jaar",boekenouder,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+6,"Boeken tot 13","Boeken voor kinderen tot 13 jaar",boekenjonger,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+7,"DVD's 13+","Films voor 13 jaar en ouder",dvdouder,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+8,"DVD's tot 13","Films voor kinderen tot 13",dvdjonger,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+9,"Huisraad Spullen","Spullen voor in huis",huisraadspullen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+10,"Overige Huisraad","Overige huisraad",overigehuisraad,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,11,NULL,NULL
+11,"Jongens Jassen","Jassen voor jongens",jongensjassen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,4,NULL,NULL
+12,"Meisjes Jassen","Jassen voor Meisjes",meisjesjassen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,4,NULL,NULL
+13,"Volwassen Jassen","Jassen voor Volwassenen",volwassenjassen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,4,NULL,NULL
+14,"Overige Jassen","Overige jassen",overigejassen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,4,NULL,NULL
+15,"Jongens Kleding","Jongens Kleding",jongenskleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+16,"Meisjes Kleding","Meisjes Kleding",meisjeskleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+17,Zwangerschapkleding,Zwangerschapskleding,zwangerschapskleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+18,Volwassenen,"Kleding voor volwassenen",volwassenkleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+19,Broeken,"Broeken van jong tot oud",broeken,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+20,Leggings,Leggings,leggings,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+21,Maillots,Maillots,maillots,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+22,Pyjama's,Pyjama's,pyjamas,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+23,"Kruip & Bok pakjes","Voor de kleintjes in de box of op de grond",kruipboxpakjes,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+24,Zwemkleding,"Zwemkleding jong en oud",zwemkleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+25,Ondergoed,"Ondergoed jong en oud",ondergoed,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+26,"Jongens Schoenen","Jongens Schoenen",jongensschoenen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,8,NULL,NULL
+27,"Meisjes Schoenen","Meisjes Schoenen",meisjesschoenen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,8,NULL,NULL
+28,"Baby Schoentjes","Baby schoentjes",babyschoentjes,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,8,NULL,NULL
+29,"Schoenen voor Volwassenen","Schoenen voor Volwasennen",volwassenschoenen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,8,NULL,NULL
+30,Spelletjes,"Bordspellen e.d.",bordspellen,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,9,NULL,NULL
+31,Puzzels,"Puzzels voor jong en oud",puzzels,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,9,NULL,NULL
+32,Knuffels,"Knuffels voor jong en oud",knuffels,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,9,NULL,NULL
+33,Overige,"Overig Speelgoed",overigespeelgoed,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,9,NULL,NULL
+34,"Baby Kleding","Baby Kleding",babykleding,https://vignette.wikia.nocookie.net/joke-battles/images/2/22/Categories.jpg/revision/latest?cb=20151230222604,1,5,NULL,NULL
+50,Overige,"Producten die niet in een andere categorie passen.",overige,/storage/store/noimage.png,1,1,"2018-04-22 11:26:26","2018-04-22 11:26:26"

@@ -1,0 +1,1 @@
+SELECT COUNT(productnaam) AS NumberOfProducts FROM winnaars WHERE fbnaam = 'Francina van Wanrooy' and gewonnenop>='2018-04-01 00:00:00' and gewonnenop<='2018-05-03 00:00:00'

@@ -1,0 +1,28 @@
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.2em;
+  }
+}
+/*.custom-select-sm {
+    height: calc(1.8125rem + 8px);
+    padding-top: .375rem;
+    padding-bottom: .375rem;
+    font-size: 100%;
+}
+*/
