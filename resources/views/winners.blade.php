@@ -13,7 +13,7 @@
                 <tr>
                   <th scope="col">Wie</th>
                   <th scope="col">Wat</th>
-                  <th scope="col">Wanneer</th>
+                  <th scope="col">Gewonnen op</th>
                 </tr>
               </thead>
               <tbody>

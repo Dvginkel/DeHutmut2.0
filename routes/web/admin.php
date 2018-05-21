@@ -8,7 +8,7 @@ Route::get('/products/create', 'beheer\ProductController@create')->name('createP
 Route::get('/products/{id}/edit', 'beheer\ProductController@edit');
 Route::get('/products/{id}', 'beheer\ProductController@show');
 Route::get('/products/{id}/delete', 'beheer\ProductController@delete');
-Route::POST('/products', 'beheer\ProductController@store');
+Route::POST('/products', 'beheer\ProductController@create');
 Route::POST('/products/{id}', 'beheer\ProductController@update');
 
 Route::get('/categories', 'beheer\CategoryController@index');
@@ -34,8 +34,8 @@ Route::get('/faq/{id}/restore', 'beheer\FaqController@restore');
 
 Route::get('/todo', 'TodoController@index');
 Route::POST('/todo/{id}', 'TodoController@update');
-Route::get('/users', 'beheer\ControlPanelController@users');
-Route::get('/winners', 'beheer\ControlPanelController@adminWinners');
+Route::get('/users', 'beheer\UsersController@index');
+Route::get('/winners', 'beheer\WinnersController@index');
 Route::get('/drawWinner', 'beheer\WinnersController@drawWinner');
 // Route::get('/product/{id}', 'ControlPanelController@getSubCatFromMainCat');
 // Route::get('/product/{id}/edit', 'ControlPanelController@update');

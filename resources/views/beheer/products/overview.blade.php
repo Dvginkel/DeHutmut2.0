@@ -21,18 +21,22 @@
      @foreach($products as $product)
     <tr>
       <td><img src="{{ $product->photo }}" class="img-fluid" alt="{{ $product->name }}"></td>
-      <td>{{ $product->name }}</td>
+      <td>
+        {{ $product->name }}
+          @if($product->active === 0)
+            (staat niet op de website)
+          @endif
+      </td>
 
       <td>
-        <form method="GET" action="/beheer/products/{{ $product->id }}/edit">
-            <button class="btn btn-warning btn-sm">Edit</button></td>
-        </form>
-        <form method="GET" action="/beheer/products/{{ $product->id }}/disable">
-            <button class="btn btn-warning btn-sm">Disable</button></td>
-        </form>
-        <form method="GET" action="/beheer/products/{{ $product->id }}/delete">
-            <button class="btn btn-warning btn-sm">Delete</button></td>
-        </form>
+        <div class="btn-group-vertical" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-warning">Wijzigen</button>
+          @if($product->active === 0)
+          <button type="button" class="btn btn-primary">Enable</button>
+          @endif
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </td>
     </tr>
     @endforeach
   </tbody>

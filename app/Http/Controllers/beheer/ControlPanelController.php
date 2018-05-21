@@ -68,11 +68,7 @@ class ControlPanelController extends Controller
     }
     public function users()
     {
-            //$users = User::all();
-            $users = User::with('roles')->get();
-            $roles = Role::all();
-            #dd($users);
-            return view('beheer.users.index', compact('users', 'roles'));
+
     }
 
     public function adminWinners()

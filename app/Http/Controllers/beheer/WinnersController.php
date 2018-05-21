@@ -27,7 +27,7 @@ class WinnersController extends Controller
             ->join('products', 'products.id', '=', 'winners.product_id')
             ->select('winners.created_at','users.name as username', 'products.name as productname')
             ->get();
-        return view('winners', compact('winners'));
+        return view('beheer.winners', compact('winners'));
     }
 
     public function drawWinner()

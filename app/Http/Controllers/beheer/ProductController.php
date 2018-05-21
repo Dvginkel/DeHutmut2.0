@@ -9,7 +9,7 @@ use Image;
 use App\User;
 use App\Categories;
 use App\subCategories;
-
+use \Storage;
 
 class ProductController extends Controller
 {

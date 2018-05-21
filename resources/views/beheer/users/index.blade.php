@@ -1,6 +1,6 @@
 @extends('beheer.master')
 
-@section('users')
+@section('content')
 <h2>Gebruikers overzicht</h2>
 <div class="row">
           <div class="table-responsive">
@@ -18,7 +18,7 @@
                         <form>
                           <div class="form-group">
                             <label for="name">Naam</label>
-                            <input type="text" class="form-control" disabled id="exampleInputEmail1" value="{{ $user->name}}" aria-describedby="name" placeholder="Naam">
+                            <input type="text" class="form-control" disabled id="name" value="{{ $user->name}}" aria-describedby="name" placeholder="Naam">
                           </div>
                           <div class="form-group">
                             <label for="email">E-mailadres</label>
@@ -30,8 +30,7 @@
                           </div>
                          <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
                         </form>
-                        <hr>
-                          @include('beheer.users.role')
+
                         <hr>
                         <h4>Acties</h4>
                         <div>

@@ -13,7 +13,7 @@
         <div class="container">
             <div class="row">
                 @foreach($categories as $category)
-                    <div class="col-md-4" style="min-height: 300px;">
+                    <div class="col-md-6" style="min-height: 300px;">
                       <div class="card mb-3 border-primary box-shadow" >
                         <img class="card-img-top" src="{{ $category->photo }}" alt="{{ $category->name }}">
                         <div class="card-body">

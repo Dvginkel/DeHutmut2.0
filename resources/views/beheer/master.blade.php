@@ -16,7 +16,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="../../../css/beheer/master.css" rel="stylesheet">
+    <!-- <link href="../../../css/beheer/master.css" rel="stylesheet"> -->
+    <link href="../../../css/jumbotron.css" rel="stylesheet">
     <link href="../../../css/faq.css" rel="stylesheet">
     <script src="../../../js/beheer/checkbox.js"></script>
 
@@ -24,7 +25,7 @@
 
   <body>
      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Fixed navbar</a>
+      <a class="navbar-brand" href="#">Hutmut Beheer</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/beheer/winners">
                   <span data-feather="shopping-cart"></span>
                   Winnaars
                 </a>
@@ -73,7 +74,7 @@
                 </a>
               </li>
                <li class="nav-item">
-                <a class="nav-link" href="/beheer/post">
+                <a class="nav-link" href="/beheer/posts">
                   <span data-feather="users"></span>
                   Nieuwsberichten
                 </a>
