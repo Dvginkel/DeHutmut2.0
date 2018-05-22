@@ -17,10 +17,13 @@ class CreateAppointmentsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('to_user_id');
+            $table->string('title');
+            $table->text('message');
             $table->integer('product_id');
             $table->integer('read')->default(0);
             $table->integer('created')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -37,6 +37,7 @@
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/account/tickets">Mijn Lotingen</a>
                     <a class="dropdown-item" href="/account/info">Mijn Gegevens</a>
+                    <a class="dropdown-item" href="/account/inbox">Mijn Inbox</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="/logout">Uitloggen</a>
                     @if(Auth()->user()->hasRole('Beheerder'))

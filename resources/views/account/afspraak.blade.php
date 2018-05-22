@@ -36,12 +36,12 @@ color: #999;
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ $gewonnenProduct->name }}</td>
+                  <td>{{ $gewonnenProduct->productname }}</td>
                   <td>{{ $gewonnenProduct->created_at->format('d-m-Y H:i:s') }}</td>
                   <td>
                     <form method="POST" action="/account/afspraak">
                         {{ csrf_field() }}
-                        <input type="hidden" name="product_id" value="{{ $gewonnenProduct->id}}">
+                        <input type="hidden" name="product_id" value="{{ $gewonnenProduct->product_id}}">
                         <button class="btn btn-primary">Afspraak Maken</button></td>
                     </form>
                 </tr>

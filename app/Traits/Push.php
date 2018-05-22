@@ -22,7 +22,7 @@ trait Push
                             ->setSound('default')
                             ->setIcon('/storage/store/teddy-bear.png')
                             ->setBadge('/storage/store/teddy-bear.png')
-                            ->setClickAction('https://www.google.nl');
+                            ->setClickAction('https://dev.dehutmut.nl/account/');
 
 
 //dd($notificationBuilder);

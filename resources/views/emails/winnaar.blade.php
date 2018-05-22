@@ -1,7 +1,7 @@
 @component('mail::message')
 # Lootje gewonnen
 
-Hoi {{ $username->name }},
+Hoi {{ $username }},
 @component('mail::panel', ['url' => ''])
     Je hebt de een loting gewonnen, maak binnen 12 uur een afspraak met Doreth van Dam
     @component('mail::button', ['url' => 'https://dev.dehutmut.nl/account/afspraak'])

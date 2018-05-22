@@ -46,8 +46,9 @@ class WinnersController extends Controller
        // return $userDraws;
         $rand_key = array_rand($userDraws, 1);
         $winner = $userDraws[$rand_key];
-        #dd($winner);
+       #dd($winner);
         $username = $winner['user_name'];
+        $userId = $winner['user_id'];
         $productname = $winner['product_name'];
         $productId = $winner['product_id'];
 
@@ -60,11 +61,12 @@ class WinnersController extends Controller
         6) Log winner name and date to database so we can produce metrics on user winnings.
         */
         // Check if user has push notifications enabled.
-        $winnerUserId = $winner['user_id'];
-        $pushActive = PushNotification::where('user_id', '=', $winnerUserId)->first();
+
+        $pushActive = PushNotification::where('user_id', '=', $userId)->first();
         //dd($pushActive);
         $useremail =  auth()->user()->email;
-            $username =  auth()->user();
+        $username =  auth()->user()->name;
+
         if($pushActive === null)
         {
             // Gebruiker heeft geen actieve push token
@@ -76,7 +78,7 @@ class WinnersController extends Controller
             $token = $pushActive['user_token'];
             // Store winners name and product into table
             $saveWinner = Winners::create([
-                'user_id' => $winnerUserId,
+                'user_id' => $userId,
                 'product_id' => $productId,
             ]);
             // If record has been saved, send push notification and mail to user.

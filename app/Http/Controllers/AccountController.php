@@ -53,7 +53,9 @@ class AccountController extends Controller
         $userId = Auth()->user()->id;
         $gewonnenProducten = Winners::where('user_id', '=', $userId)
         ->join('products', 'products.id', '=', 'winners.product_id')
+        ->select('products.name as productname', 'winners.*')
         ->get();
+        //dd($gewonnenProducten);
         return view('account.afspraak', compact('gewonnenProducten'));
     }
 
@@ -84,8 +86,9 @@ class AccountController extends Controller
 
     public function inbox()
     {
-        $messages = Appointments::where("to_user_id", auth()->user()->id)->get();
-        return $messages;
+        //$messages = Appointments::where("to_user_id", auth()->user()->id)->get();
+        $messages = Appointments::with('user')->where('to_user_id', auth()->user()->id)->get();
+        //return $messages;
         return view('account.inbox', compact('messages'));
     }
 }
