@@ -39,3 +39,5 @@ Route::get('/winners', 'beheer\WinnersController@index');
 Route::get('/drawWinner', 'beheer\WinnersController@drawWinner');
 // Route::get('/product/{id}', 'ControlPanelController@getSubCatFromMainCat');
 // Route::get('/product/{id}/edit', 'ControlPanelController@update');
+
+Route::get('/woordenboek', 'beheer\DictionaryController@index');

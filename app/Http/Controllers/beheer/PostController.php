@@ -11,16 +11,16 @@ class PostController extends Controller
 {
     public function index()
     {
-
-        return view('beheer.posts.index');
+        $posts = Post::all();
+        return view('beheer.posts.index', compact('posts'));
     }
 
     public function create(StoreNewPost $request)
     {
         $validated = $request->validated();
         $userId = Auth()->user()->id;
-        $post = new Post;
-        $post->user_id = $userId;
+        $post = new Post
+;        $post->user_id = $userId;
         $post->title = $validated['title'];
         $post->message = $validated['message'];
         $post->save();

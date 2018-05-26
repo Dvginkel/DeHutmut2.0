@@ -7,8 +7,16 @@ use App\subCategories;
 use App\Product;
 use Carbon\Carbon;
 use App\Size;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class subCategoriesController extends Controller
 {
+    use SoftDeletes;
+
+    protected $product_id;
+    protected $dates = ['deleted_at'];
+
+
     public function index($id, $slug)
     {
           $sizes = Size::where('gender', '=', $id)->get();
