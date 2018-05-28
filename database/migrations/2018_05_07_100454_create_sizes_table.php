@@ -20,6 +20,7 @@ class CreateSizesTable extends Migration
             $table->string('age');
             $table->integer('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

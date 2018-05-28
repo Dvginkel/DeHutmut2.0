@@ -18,6 +18,7 @@ class CreatePushNotificationsTable extends Migration
             $table->string('user_token');
             $table->primary(['user_id', 'user_token']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

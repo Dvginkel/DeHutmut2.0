@@ -18,6 +18,7 @@
     <link href="{{ URL::asset('/css/jumbotron.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/breadcrumb.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('/css/hutmut.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('/css/modal.css') }}" rel="stylesheet">
 
 
     <!-- Custom Javascript -->

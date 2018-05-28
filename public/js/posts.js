@@ -1,23 +1,23 @@
 $(document).ready(function(){
-
+    $('#test').hide();
     $('#postToEdit').on('change', function(){
-        //console.log($(this).val());
         var postId = $(this).val();
-        $.ajax({
-                type: 'get',
-                url:"/api/posts/" + postId,
-                success: function(data) {
-                    var title =  data['title'];
-                    var message =  data['message'];
-
-                    $('#title').val("test");
-                    $('#message').val(message);
-                    console.log(data)
-
-                 },
-                error: (error) => {
-                  console.log(error);
-                }
-            });
+    $.ajax({
+        type: 'get',
+        url:"/api/posts/" + postId,
+        success: function(data) {
+            var title =  data['title'];
+            var message =  data['message'];
+            var post_id = data['id'];
+            $('#test').show();
+            $('input[name="titleEdit"]').val(title);
+            $("textarea#messageEdit").val(message);
+            $("#post_id").val(post_id);
+            CKEDITOR.instances.messageEdit.setData(message);
+        },
+        error: (error) => {
+            console.log(error);
+        }
+        });
     });
 });

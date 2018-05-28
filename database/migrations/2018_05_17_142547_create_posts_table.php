@@ -19,10 +19,12 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
     /**
+     * 
      * Reverse the migrations.
      *
      * @return void

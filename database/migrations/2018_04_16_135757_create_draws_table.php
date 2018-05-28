@@ -20,6 +20,7 @@ class CreateDrawsTable extends Migration
             $table->string('einde_loting');
             $table->integer('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

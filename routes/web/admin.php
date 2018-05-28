@@ -21,7 +21,7 @@ Route::get('/categories/{id}/delete', 'beheer\CategoryController@delete');
 
 Route::get('/posts', 'beheer\PostController@index');
 Route::get('/posts/{id}/edit', 'beheer\PostController@update');
-Route::POST('/posts', 'beheer\PostController@create');
+Route::POST('/posts', 'beheer\PostController@update');
 
 Route::get('/faq', 'beheer\FaqController@index');
 Route::post('/faq', 'beheer\FaqController@update');

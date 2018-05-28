@@ -21,6 +21,7 @@ class CreateTodosTable extends Migration
             $table->string('priority');
             $table->integer('completed');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -33,7 +33,7 @@ class StoreNewPost extends FormRequest
     {
         return [
             'title.required' => 'A title is required',
-            'body.required'  => 'A message is required',
+            'message.required'  => 'A message is required',
         ];
     }
 }

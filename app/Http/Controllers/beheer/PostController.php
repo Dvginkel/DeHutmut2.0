@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNewPost;
 use App\Post;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
@@ -27,8 +28,24 @@ class PostController extends Controller
         return redirect()->action('beheer\PostController@index');
     }
 
-    public function update(Requests $request)
+    public function update(Request $request)
     {
-        return $request;
+       #return $request;
+        $title = $request->titleEdit;
+        $message = $request->textarea;
+        $post_id = $request->post_id;
+
+
+        $updatePost = Post::where('id', $post_id)
+        ->update([
+            'title' => $title,
+            'message' => $message,
+        ]);
+
+        if($updatePost)
+        {
+            return redirect()->action('beheer\PostController@index');
+        }
+
     }
 }
