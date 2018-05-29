@@ -1,0 +1,15 @@
+.btn-primary {
+    color:white;
+    background-color:hotpink;
+    border-color: #007bff;
+  }
+  .btn-secondary {
+    color:white;
+    background-color:hotpink;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    color: #fff;
+    background-color:hotpink;
+    border-color: #0062cc;
+  }

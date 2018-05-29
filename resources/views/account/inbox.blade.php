@@ -23,7 +23,7 @@
       <thead>
         <tr>
           <th scope="col">Onderwerp</th>
-          <th scope="col">Ontvangen</th>
+          <!-- <th scope="col">Ontvangen</th> -->
 
         </tr>
       </thead>
@@ -31,13 +31,13 @@
         @foreach($messages as $message)
         <tr>
           <td>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ $message->id }}">
-              Lees bericht
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#{{ $message->id }}">
+            {{ $message->title }}
             </button>
           </td>
-          <td>
+          <!-- <td>
             {{ $message->created_at->format("d-m-Y H:i:s") }}
-          </td>
+          </td> -->
         </tr>
 
 

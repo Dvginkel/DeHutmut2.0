@@ -72,7 +72,7 @@ class AccountController extends Controller
 
     public function update(Request $request)
     {
-        return $request;
+        #return $request;
         $validatedData = $request->validate([
             'email' => 'required|email',
         ]);

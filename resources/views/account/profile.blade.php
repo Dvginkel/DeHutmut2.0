@@ -6,7 +6,7 @@
 <div class="col-xs-12">
   <div class="well well-sm">
     <div class="row">
-      <div class="alert alert-success ml-auto mr-auto" id="mailChangedMessage"></div>
+
       <div class="col-sm-6 col-md-4">
         {{--
         <img src="#" alt="" width="50%" class="img-rounded img-responsive" /> --}}
@@ -18,8 +18,8 @@
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ $user->name }}
-              <!-- <span><button id="changeMail" class="btn btn-sm btn-primary pull-right">Naam veranderen</button></span> -->
             </h5>
+            <div class="alert alert-success ml-auto mr-auto" id="mailChangedMessage"></div>
             <h5 class="card-title" id="oldEmail">{{ $user->email }}
               <span>
                 <!-- Button trigger modal -->
@@ -40,27 +40,25 @@
                       </button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <label for="newUserMail">Je nieuwe e-mailadres</label>
-                        <input type="email" class="form-control" id="newUserMail" placeholder="Voer je nieuwe e-mailadres in...">
-                      </div>
-                      <div class="form-group">
-                        <label for="newUserMailConfirm">Je nieuwe e-mailadres (nogmaals)</label>
-                        <input type="email" class="form-control" id="newUserMailConfirm" placeholder="Voer je nieuwe e-mailadres nogmaals in... ">
-                      </div>
-                    </form>
+
+                    <div class="form-group">
+                      <label for="newUserMail">Je nieuwe e-mailadres</label>
+                      <input type="email" class="form-control" id="newUserMail" placeholder="Voer je nieuwe e-mailadres in...">
+                    </div>
+                    <div class="form-group">
+                      <label for="newUserMailConfirm">Je nieuwe e-mailadres (nogmaals)</label>
+                      <input type="email" class="form-control" id="newUserMailConfirm" placeholder="Voer je nieuwe e-mailadres nogmaals in... ">
+                    </div>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="updateEmailñ">Opslaan</button>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <h5 class="card-title" id="memberSince">{{ $user->created_at->format('d-m-Y') }}</h5> -->
             <h5 class="card-title" id="memberSince">Lid sinds {{ $user->created_at->format('d-m-Y') }}</h5>
-            <button id="saveBtn" class="btn btn-md btn-primary pull-right">Opslaan</button>
           </div>
           </form>
         </div>

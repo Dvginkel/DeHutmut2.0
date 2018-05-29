@@ -20,6 +20,7 @@
   <!-- Custom styles for this template -->
   <!-- <link href="../../../css/beheer/master.css" rel="stylesheet"> -->
   <link href="../../../css/jumbotron.css" rel="stylesheet">
+  <link href="../../../css/buttons/buttonStyle.css" rel="stylesheet">
   <link href="../../../css/faq.css" rel="stylesheet">
   <script src="../../../js/beheer/checkbox.js"></script>
 

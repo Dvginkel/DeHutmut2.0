@@ -26,9 +26,6 @@
         </div>
         @endif
         <br>
-        <!--   @foreach($gewonnenProducten as $gewonnenProduct)
-                        <option>{{ $gewonnenProduct->name }}</option>
-                        @endforeach -->
         <table class="table">
             <thead>
                 <tr>

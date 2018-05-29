@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Product Toevoegen</button>
+      <button type="submit" class="btn btn-primary pull-right">Product Toevoegen</button>
     </form>
   </div>
   <hr>
