@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
+@extends('layouts.master') @section('content')
 <div class="row">
     <div class="col-md-12">
         <h1>Niet Bevoegd</h1>

@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
+@extends('layouts.master') @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -13,7 +11,7 @@
                         <br />
                         <div class="form-group">
                             <div class="col-md-12">
-                              <a href="{{url('/redirect')}}" class="btn btn-primary btn-block">Login with Facebook</a>
+                                <a href="{{url('/redirect')}}" class="btn btn-primary btn-block">Login with Facebook</a>
                             </div>
                         </div>
                     </form>

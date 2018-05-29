@@ -31,4 +31,6 @@ class SocialAuthFacebookController extends Controller
         auth()->login($user);
         return redirect()->to('/store');
     }
+
+   
 }

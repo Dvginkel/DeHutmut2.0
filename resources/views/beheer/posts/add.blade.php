@@ -1,14 +1,14 @@
-
-<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#addPost" aria-expanded="true" aria-controls="addPost">
+<button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#addPost" aria-expanded="true"
+    aria-controls="addPost">
     Bericht Toevoegen
 </button>
 <br>
 <div class="collapse mb-3" id="addPost">
 
-      <div class="starter-template">
+    <div class="starter-template">
         <h3>Nieuwsbericht Plaatsen</h3>
         <p class="lead">Op deze pagina kan je berichten plaatsen, wijzigen en verwijderen.</p>
-      </div>
+    </div>
     <div class="starter-template">
         <form method="post" action="/beheer/posts/">
             @csrf
@@ -26,7 +26,7 @@
         </form>
     </div>
 </div>
-    <script src="../../../vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'message' );
-    </script>
+<script src="../../../vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('message');
+</script>

@@ -20,8 +20,8 @@ class PostController extends Controller
     {
         $validated = $request->validated();
         $userId = Auth()->user()->id;
-        $post = new Post
-;        $post->user_id = $userId;
+        $post = new Post;
+        $post->user_id = $userId;
         $post->title = $validated['title'];
         $post->message = $validated['message'];
         $post->save();

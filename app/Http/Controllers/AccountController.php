@@ -39,7 +39,8 @@ class AccountController extends Controller
 
         if($checkExisting)
         {
-            return 'Je bent al aangemeld voor Push Notificaties.';
+            return redirect()->action('AccountController@index')->with('message','Je bent al aangemeld voor Push Notificaties');
+            //return 'Je bent al aangemeld voor Push Notificaties.';
         } else {
             $test = PushNotification::create([
                 'user_id' => $userId,
@@ -71,7 +72,7 @@ class AccountController extends Controller
 
     public function update(Request $request)
     {
-
+        return $request;
         $validatedData = $request->validate([
             'email' => 'required|email',
         ]);
