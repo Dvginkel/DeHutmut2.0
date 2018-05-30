@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->string('description');
             $table->string('photo');
-            $table->integer('active');
+            $table->integer('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

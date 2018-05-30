@@ -27,9 +27,26 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $catNameToSlug = strtolower($request->catName);
+        $slug = str_replace(" ",'', $catNameToSlug);
+
+        $category = new Categories;
+        $category->name = $request->catName;
+        $category->slug = $slug;
+        $category->description = $request->catDescription;
+        $category->photo = '/storage/store/noimage.png';
+        $category->active = 1;
+        $test = $category->save();
+
+        if($test)
+        {
+            return redirect()->action('beheer\CategoryController@index')->with('message', 'Categorie is toegevoegd.');
+        }
+
+
+
     }
 
     /**

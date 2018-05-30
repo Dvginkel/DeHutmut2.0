@@ -14,7 +14,7 @@ Route::POST('/products/{id}', 'beheer\ProductController@update');
 Route::get('/categories', 'beheer\CategoryController@index');
 Route::get('/categories/{id}/edit', 'beheer\CategoryController@edit');
 Route::POST('/categories/{id}', 'beheer\CategoryController@update');
-
+Route::POST('/categories', 'beheer\CategoryController@create');
 
 Route::POST('/categories/{id}/disable', 'beheer\CategoryController@disable');
 Route::get('/categories/{id}/delete', 'beheer\CategoryController@delete');
