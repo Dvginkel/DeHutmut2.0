@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers\beheer;
 
-
 use App\User;
 use App\Categories;
 use App\subCategories;
@@ -33,15 +32,12 @@ class ControlPanelController extends Controller
         return view('beheer.index');
     }
 
-     public function products(Request $request)
+    public function products(Request $request)
     {
-
     }
 
     public function store(Request $request)
     {
-
-
     }
 
     public function getSubCatFromMainCat($id)
@@ -54,32 +50,25 @@ class ControlPanelController extends Controller
 
     public function update($id)
     {
-
     }
 
     public function categories()
     {
-
     }
 
     public function categoriesStore()
     {
-
     }
     public function users()
     {
-
     }
 
     public function adminWinners()
     {
-         $winners = Winners::join('users', 'users.id', '=', 'winners.user_id')
+        $winners = Winners::join('users', 'users.id', '=', 'winners.user_id')
             ->join('products', 'products.id', '=', 'winners.product_id')
-            ->select('winners.created_at','users.name as username', 'products.name as productname')
+            ->select('winners.created_at', 'users.name as username', 'products.name as productname')
             ->get();
         return view('beheer.winners', compact('winners'));
     }
-
-
 }
-

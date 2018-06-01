@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 
 class RegisterTicketController extends Controller
 {
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,6 +18,5 @@ class RegisterTicketController extends Controller
 
     public function create()
     {
-
     }
 }

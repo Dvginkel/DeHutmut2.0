@@ -6,6 +6,4 @@ use App\Model;
 
 class Dictionary extends Model
 {
-
-
 }

@@ -13,10 +13,8 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use App\Appointment;
 
-
 class User extends Authenticatable
 {
-
     use Notifiable;
 
     /**
@@ -53,27 +51,23 @@ class User extends Authenticatable
     }
     public function faqDeleteAccess()
     {
-
-
-      echo array_search(auth()->user()->id, $users);
-      if(auth()->user()->id === 1){
-        return true;
-      } else {
-        return false;
-      }
+        echo array_search(auth()->user()->id, $users);
+        if (auth()->user()->id === 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
     public function authorizeRoles($roles)
     {
-      if (is_array($roles))
-      {
-        $c = $this->hasAnyRole($roles);
-        //dd($c);
-        if($c === false){
-          abort('401', 'Je mag hier niet komen.');
-
+        if (is_array($roles)) {
+            $c = $this->hasAnyRole($roles);
+            //dd($c);
+            if ($c === false) {
+                abort('401', 'Je mag hier niet komen.');
+            }
+            //abort(401, 'This action is unauthorized.');
         }
-        //abort(401, 'This action is unauthorized.');
-      }
         // return $this->hasRole($roles) ||
         //        abort(401, 'This action is unauthorized.');
     }
@@ -83,7 +77,7 @@ class User extends Authenticatable
     */
     public function hasAnyRole($roles)
     {
-      return null !== $this->roles()->whereIn('name', $roles)->first();
+        return null !== $this->roles()->whereIn('name', $roles)->first();
     }
     /**
     * Check one role
@@ -91,21 +85,21 @@ class User extends Authenticatable
     */
     public function hasRole($role)
     {
-      return null !== $this->roles()->where('name', $role)->first();
+        return null !== $this->roles()->where('name', $role)->first();
     }
 
     public function pushRegistration()
     {
-      return $this->hasOne('App\PushNotification');
+        return $this->hasOne('App\PushNotification');
     }
 
     public function posts()
     {
-      return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function inbox()
     {
-      return $this->hasMany(Appointments::class);
+        return $this->hasMany(Appointments::class);
     }
 }

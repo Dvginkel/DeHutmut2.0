@@ -23,7 +23,6 @@ class CreateSubCategoriesTable extends Migration
             $table->integer('categories_id');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

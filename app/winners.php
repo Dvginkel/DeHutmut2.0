@@ -9,8 +9,8 @@ class winners extends Model
 {
     public function getUserName($id)
     {
-       $username = User::find($id);
-       return $username;
+        $username = User::find($id);
+        return $username;
     }
 
     public function gewonnenop($value)

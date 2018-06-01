@@ -19,14 +19,14 @@ class subCategoriesController extends Controller
 
     public function index($id, $slug)
     {
-          $sizes = Size::where('gender', '=', $id)->get();
+        $sizes = Size::where('gender', '=', $id)->get();
 
-          $colors = Product::select('color')->groupBy('color')->distinct()->where('color', '!=', '')->get();
-          $ages = Size::select('age as leeftijd','id')->distinct()->where('age', '!=', '')
+        $colors = Product::select('color')->groupBy('color')->distinct()->where('color', '!=', '')->get();
+        $ages = Size::select('age as leeftijd', 'id')->distinct()->where('age', '!=', '')
             ->where('gender', '=', $id)
             ->orderBy('id', 'asc')
             ->get();
-            $cat_id = $id;
+        $cat_id = $id;
         switch ($slug) {
             case 'allesopeenhoop':
                  // Get SubCategories
@@ -59,7 +59,5 @@ class subCategoriesController extends Controller
                 return view('store.show', compact('subCategories', 'slug'));
                 break;
         }
-
-
     }
 }

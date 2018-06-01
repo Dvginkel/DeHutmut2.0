@@ -15,7 +15,7 @@ class Product extends Model
 
     public function subCategories()
     {
-       return $this->hasOne(subCategories::class, 'id');
+        return $this->hasOne(subCategories::class, 'id');
     }
     // public function user_id()
     // {

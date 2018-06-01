@@ -10,7 +10,7 @@
   </ul>
 </div>
 @endif @if(!empty($product))
-<form method="post" action="/beheer/products/{{ $product->id}}">
+<form method="post" action="/beheer/products/{{ $product->id}}/edit">
   @csrf
   <div class="form-group">
     <span class="input-group-addon">

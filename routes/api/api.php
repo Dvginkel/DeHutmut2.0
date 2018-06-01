@@ -23,23 +23,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('product', function() {
+Route::get('product', function () {
     // If the Content-Type and Accept headers are set to 'application/json',
     // this will return a JSON structure. This will be cleaned up later.
     return Product::paginate();
 });
 
-Route::get('product/{id}', function($id) {
+Route::get('product/{id}', function ($id) {
     return Product::find($id);
 });
 
-Route::get('category/{id}', function(Request $request, $id){
+Route::get('category/{id}', function (Request $request, $id) {
     return Categories::with('subCategories')->findOrFail($id);
 });
 
-Route::post('category/{id}/update', function(Request $request, $id){
-
-
+Route::post('category/{id}/update', function (Request $request, $id) {
     $test = Categories::where('id', '=', $id)->first();
 
     $test->update([
@@ -50,16 +48,16 @@ Route::post('category/{id}/update', function(Request $request, $id){
     return json_encode($msg);
 });
 
-Route::get('size/{id}', function($id) {
+Route::get('size/{id}', function ($id) {
     //return Size::where('size','=',$id)->pluck('age');
-    return Size::where('size','=',$id)->get();
+    return Size::where('size', '=', $id)->get();
 });
 
-Route::get('faq/{id}', function($id){
+Route::get('faq/{id}', function ($id) {
     return Faq::where('id', '=', $id)->first();
 });
 
-Route::get('posts/{id}', function($id) {
+Route::get('posts/{id}', function ($id) {
     // If the Content-Type and Accept headers are set to 'application/json',
     // this will return a JSON structure. This will be cleaned up later.
     return Post::findOrFail($id);

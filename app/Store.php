@@ -6,5 +6,4 @@ use App\Categories;
 
 class Store extends Model
 {
-
 }

@@ -16,62 +16,46 @@ class DictionaryController extends Controller
         ->where('active', 1)
         ->get()->toArray();
 
-          foreach($tests as $item)
-            {
+        foreach ($tests as $item) {
 
                 //check if description or name containt's  spaces
-                $name =  $item['name'];
-                $description = $item['description'];
+            $name =  $item['name'];
+            $description = $item['description'];
 
-                $spaceCheckName =  preg_match('/\s/',$name);
-                $spaceCheckDescription =  preg_match('/\s/',$description);
+            $spaceCheckName =  preg_match('/\s/', $name);
+            $spaceCheckDescription =  preg_match('/\s/', $description);
 
-                if($spaceCheckName === 0)
-                {
-                    // no spaces found, add to dictionaryArray.
-                    array_push($dictionaryArray, $item['name']);
-                } else {
-                    // one or more spaces found. let's explode them
-                   $dennis = explode(" ",$item['name']);
-                   for($i =0; $i < count($dennis); $i++)
-                   {
-                        array_push($dictionaryArray, $item['name'][$i]);
-                   }
-
-
-
-
-
+            if ($spaceCheckName === 0) {
+                // no spaces found, add to dictionaryArray.
+                array_push($dictionaryArray, $item['name']);
+            } else {
+                // one or more spaces found. let's explode them
+                $dennis = explode(" ", $item['name']);
+                for ($i =0; $i < count($dennis); $i++) {
+                    array_push($dictionaryArray, $item['name'][$i]);
                 }
-
-
-
-
             }
-            //return array_unique($dictionaryArray);
-            $result2 = array_filter($dictionaryArray,function($v){ return strlen($v) < 3; });
+        }
+        //return array_unique($dictionaryArray);
+        $result2 = array_filter($dictionaryArray, function ($v) {
+            return strlen($v) < 3;
+        });
 
-            $finalWordList[] = array_diff($dictionaryArray, $result2);
-            //return array_unique($result2);
-            //dd($finalWordList);
-            foreach($finalWordList as $word)
-            {
+        $finalWordList[] = array_diff($dictionaryArray, $result2);
+        //return array_unique($result2);
+        //dd($finalWordList);
+        foreach ($finalWordList as $word) {
+            $count = count($word);
 
-                $count = count($word);
-
-                for($i=0; $i<$count; $i++)
-                {
-                    if($word[$i])
-                    {
-                            Dictionary::create([
+            for ($i=0; $i<$count; $i++) {
+                if ($word[$i]) {
+                    Dictionary::create([
                         'language' => 'Dutch',
                         'word' => $word[$i],
                     ]);
-                    }
-                    //echo $i;
-
                 }
-
+                //echo $i;
             }
         }
+    }
 }

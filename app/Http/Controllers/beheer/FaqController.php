@@ -5,6 +5,7 @@ namespace App\Http\Controllers\beheer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Faq;
+
 class FaqController extends Controller
 {
     public function index()
@@ -22,7 +23,6 @@ class FaqController extends Controller
 
 
         return view('beheer.faq.edit', compact('faq'));
-
     }
     public function update(Request $request)
     {
@@ -45,12 +45,11 @@ class FaqController extends Controller
     public function restore(Request $request, $id)
     {
         $c  = $request->user()->hasRole('FAQ Restore');
-        if($c ===  true){
+        if ($c ===  true) {
             $restore = Faq::where('id', $id)->restore();
             return redirect()->action('beheer\FaqController@index')->with('status', 'Verwijderen van de vraag is ongedaan gemaakt!');
         } else {
             return redirect()->action('beheer\FaqController@index')->with('status', 'Je hebt geen toegang tot deze functie.');
         }
     }
-
 }

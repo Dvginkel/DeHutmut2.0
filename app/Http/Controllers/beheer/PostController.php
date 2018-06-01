@@ -30,22 +30,17 @@ class PostController extends Controller
 
     public function update(Request $request)
     {
-       #return $request;
+        return $request;
         $title = $request->titleEdit;
         $message = $request->textarea;
         $post_id = $request->post_id;
 
-
+ 
         $updatePost = Post::where('id', $post_id)
         ->update([
             'title' => $title,
             'message' => $message,
         ]);
-
-        if($updatePost)
-        {
-            return redirect()->action('beheer\PostController@index');
-        }
-
+        return redirect()->action('beheer\PostController@index');
     }
 }

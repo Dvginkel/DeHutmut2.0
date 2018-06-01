@@ -7,8 +7,7 @@ use App\User;
 
 class Draw extends Model
 {
-
-     public function draw()
+    public function draw()
     {
         return $this->belongsToMany(Product::class);
     }
@@ -22,5 +21,4 @@ class Draw extends Model
     //     //return $this->belongsToMany(User::class);
     //     return Draw::all();
     // }
-
 }

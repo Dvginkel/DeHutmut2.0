@@ -10,11 +10,11 @@ use App\Services\SocialFacebookAccountService;
 
 class SocialAuthFacebookController extends Controller
 {
-  /**
-   * Create a redirect method to facebook api.
-   *
-   * @return void
-   */
+    /**
+     * Create a redirect method to facebook api.
+     *
+     * @return void
+     */
     public function redirect()
     {
         return Socialite::driver('facebook')->redirect();
@@ -31,6 +31,4 @@ class SocialAuthFacebookController extends Controller
         auth()->login($user);
         return redirect()->to('/store');
     }
-
-   
 }

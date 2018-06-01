@@ -10,18 +10,17 @@ use \DB;
 
 class CategoriesController extends Controller
 {
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
 
     public function index()
     {
-
-      $mainCategories = Categories::with('subCategories')
+        $mainCategories = Categories::with('subCategories')
       ->orderBy('name', 'ASC')
       ->get();
-       return view('store.index', compact('mainCategories', 'subCategories'));
+        return view('store.index', compact('mainCategories', 'subCategories'));
     }
 
     public function subCategory($category)

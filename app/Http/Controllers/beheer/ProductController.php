@@ -23,7 +23,7 @@ class ProductController extends Controller
         $request->user()->authorizeRoles(['Beheerder']);
 
         //$products = Product::paginate(25);
-        $products = Product::join('sub_categories', 'products.cat_id', '=', 'sub_categories.id' )
+        $products = Product::join('sub_categories', 'products.cat_id', '=', 'sub_categories.id')
         ->select('products.*', 'sub_categories.name as catName')
         ->paginate(150);
         #return $products;
@@ -60,8 +60,7 @@ class ProductController extends Controller
 
         $savePhoto = Storage::disk('public')->put('/products/'.$fileName, $img, 'public');
 
-        if($savePhoto)
-        {
+        if ($savePhoto) {
             product::create([
                 'product_number' => $productNumber,
                 'name' => $productName,
@@ -75,7 +74,7 @@ class ProductController extends Controller
 
             ]);
             //return redirect('/beheer/products')->with('status', 'Product is toegevoegd!');
-             return redirect()->action('beheer\ProductController@index')->with('status', 'Product is toegevoegd!.');
+            return redirect()->action('beheer\ProductController@index')->with('status', 'Product is toegevoegd!.');
         }
     }
 
@@ -87,7 +86,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $validate = $request->validate([
             'productNumber' => 'required',
             'productName' => 'required',
@@ -95,7 +93,6 @@ class ProductController extends Controller
             'productCategorie' => 'required',
             'productActive'
         ]);
-
     }
 
     /**
@@ -122,7 +119,7 @@ class ProductController extends Controller
         //return $categorieName->name;
         $catTests = Categories::with('subCategories')->get();
         //dd($catTest);
-        return view('beheer.products.edit', compact('product', 'catTests','categorieName'));
+        return view('beheer.products.edit', compact('product', 'catTests', 'categorieName'));
     }
 
     /**
@@ -140,7 +137,7 @@ class ProductController extends Controller
         $description = $request->productDescription;
         $size =  $request->productSize;
         $color = $request->productColor;
-        if($size <= 68){
+        if ($size <= 68) {
             $ageTmp = str_replace("Maanden", "", $request->productAge);
             $age = $ageTmp;
         } else {

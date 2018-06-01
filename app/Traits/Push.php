@@ -7,13 +7,10 @@ use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 
-
-
 trait Push
 {
     public function sendPush($usertoken, $username, $productName)
     {
-
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
 
@@ -25,7 +22,7 @@ trait Push
                             ->setClickAction('https://dev.dehutmut.nl/account/');
 
 
-//dd($notificationBuilder);
+        //dd($notificationBuilder);
         $dataBuilder = new PayloadDataBuilder();
         $dataBuilder->addData(['a_data' => 'my_data']);
 
@@ -51,7 +48,6 @@ trait Push
         $downstreamResponse->tokensToRetry();
 
         // return Array (key:token, value:errror) - in production you should remove from yo
-
     }
 
     public function anotherMethod()

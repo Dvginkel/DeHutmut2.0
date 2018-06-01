@@ -11,7 +11,6 @@ class AppointmentsController extends Controller
 {
     public function store()
     {
-
     }
 
     public function create(Product $productid, Request $request)
@@ -22,7 +21,7 @@ class AppointmentsController extends Controller
         $userName = Auth()->user()->name;
         $productId = $request->product_id;
 
-        $productsInfo = Product::where('id','=',$productId)->first()->toArray();
+        $productsInfo = Product::where('id', '=', $productId)->first()->toArray();
         #return $productsInfo;
         $AppointmentResult = Appointments::create([
             'user_id' => $userId,

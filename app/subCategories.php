@@ -7,9 +7,9 @@ use App\Product;
 
 class subCategories extends Model
 {
-      public function Categories()
+    public function Categories()
     {
-        return $this->belongsTo(Categories::class,  'id');
+        return $this->belongsTo(Categories::class, 'id');
     }
 
     public function product()

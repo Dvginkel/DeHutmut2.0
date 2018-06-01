@@ -25,12 +25,10 @@ class TodoController extends Controller
 
     public function update($id)
     {
-       $markTodoAsRead = Todo::where('id', '=', $id)
+        $markTodoAsRead = Todo::where('id', '=', $id)
        ->update([
             'completed' => 1,
         ]);
-       return Redirect::to('beheer/todo');
-
-
+        return Redirect::to('beheer/todo');
     }
 }

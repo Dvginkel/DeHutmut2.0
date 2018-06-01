@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\beheer;
 
-
 use Illuminate\Http\Request;
 use App\winners;
 use App\User;
@@ -25,7 +24,7 @@ class WinnersController extends Controller
     {
         $winners = Winners::join('users', 'users.id', '=', 'winners.user_id')
             ->join('products', 'products.id', '=', 'winners.product_id')
-            ->select('winners.created_at','users.name as username', 'products.name as productname')
+            ->select('winners.created_at', 'users.name as username', 'products.name as productname')
             ->get();
         return view('beheer.winners', compact('winners'));
     }
@@ -36,17 +35,17 @@ class WinnersController extends Controller
         //return $currentDatTime;
         // Get a list of expired tickets.
         $expiredTickets = Ticket::where('einde_loting', '<=', $currentDatTime)->get()->toArray();
-       # dd($expiredTickets);
+        # dd($expiredTickets);
 
         $userDraws =  Draw::whereIn('product_id', $expiredTickets[0])
         ->join('users', 'users.id', '=', 'draws.user_id')
         ->join('products', 'products.id', '=', 'draws.product_id')
-        ->select('users.name as user_name', 'users.id as user_id','products.name as product_name', 'products.id as product_id')
+        ->select('users.name as user_name', 'users.id as user_id', 'products.name as product_name', 'products.id as product_id')
         ->get()->toArray();
-       // return $userDraws;
+        // return $userDraws;
         $rand_key = array_rand($userDraws, 1);
         $winner = $userDraws[$rand_key];
-       #dd($winner);
+        #dd($winner);
         $username = $winner['user_name'];
         $userId = $winner['user_id'];
         $productname = $winner['product_name'];
@@ -67,13 +66,12 @@ class WinnersController extends Controller
         $useremail =  auth()->user()->email;
         $username =  auth()->user()->name;
 
-        if($pushActive === null)
-        {
+        if ($pushActive === null) {
             // Gebruiker heeft geen actieve push token
             echo 'Geen Token voor push';
 
             #dd($username->name);
-             \Mail::to($useremail)->send(new gewonnen($username));
+            \Mail::to($useremail)->send(new gewonnen($username));
         } else {
             $token = $pushActive['user_token'];
             // Store winners name and product into table
@@ -82,14 +80,10 @@ class WinnersController extends Controller
                 'product_id' => $productId,
             ]);
             // If record has been saved, send push notification and mail to user.
-            if($saveWinner)
-            {
+            if ($saveWinner) {
                 $this->sendPush($token, $username, $productname);
                 \Mail::to($useremail)->send(new gewonnen($username));
             }
         }
-
-
     }
-
 }

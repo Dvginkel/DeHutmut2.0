@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Categories;
 use App\subCategories;
 
-
-
 class CategoryController extends Controller
 {
     /**
@@ -30,7 +28,7 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $catNameToSlug = strtolower($request->catName);
-        $slug = str_replace(" ",'', $catNameToSlug);
+        $slug = str_replace(" ", '', $catNameToSlug);
 
         $category = new Categories;
         $category->name = $request->catName;
@@ -40,13 +38,9 @@ class CategoryController extends Controller
         $category->active = 1;
         $test = $category->save();
 
-        if($test)
-        {
+        if ($test) {
             return redirect()->action('beheer\CategoryController@index')->with('message', 'Categorie is toegevoegd.');
         }
-
-
-
     }
 
     /**
@@ -57,15 +51,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-         # dd(request());
+        # dd(request());
         $catType = request('CatType');
         $belongsToCat = request('belongsToCat');
         $catName = request('catName');
         $catDescription = request('catDescription');
 
         // Check what we have to add new cat or sub cat
-       if($catType === "subCat")
-       {
+        if ($catType === "subCat") {
             // Add new Category to existing main categorie
             subCategories::create([
                 'name' => $catName,
@@ -87,16 +80,16 @@ class CategoryController extends Controller
                 'completed' => 0,
             ]);
             return Redirect::to('beheer/categories');
-       } else {
+        } else {
             // Create a New Parent Category
-             Categories::create([
+            Categories::create([
                 'name' => $catName,
                 'slug' => strtolower($catName),
                 'description' => $catDescription,
                 'photo' => '/storage/store/noimage.png',
                 'active' => '1',
             ]);
-             // New category has been added, add a todo for me
+            // New category has been added, add a todo for me
             // Get Main Cat Name
 
             Todo::create([
@@ -107,7 +100,7 @@ class CategoryController extends Controller
                 'completed' => 0,
             ]);
             return Redirect::to('beheer/categories');
-       }
+        }
     }
 
     /**

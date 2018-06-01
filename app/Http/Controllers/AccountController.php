@@ -14,8 +14,6 @@ use App\Draw;
 use App\User;
 use App\Appointments;
 
-
-
 class AccountController extends Controller
 {
     public function index()
@@ -37,10 +35,9 @@ class AccountController extends Controller
         $userToken = $request->user_token;
         $checkExisting = PushNotification::where('user_id', '=', $userId)->first();
 
-        if($checkExisting)
-        {
-            return redirect()->action('AccountController@index')->with('message','Je bent al aangemeld voor Push Notificaties');
-            //return 'Je bent al aangemeld voor Push Notificaties.';
+        if ($checkExisting) {
+            return redirect()->action('AccountController@index')->with('message', 'Je bent al aangemeld voor Push Notificaties');
+        //return 'Je bent al aangemeld voor Push Notificaties.';
         } else {
             $test = PushNotification::create([
                 'user_id' => $userId,

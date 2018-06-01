@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
         //$this->middleware('auth');
         $this->middleware('auth')->except(['welcome']);
-
     }
 
     /**
@@ -34,7 +33,6 @@ class HomeController extends Controller
     {
         auth()->logout();
         return redirect()->route('home');
-
     }
 
     public function welcome()
