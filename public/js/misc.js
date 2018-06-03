@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('#message').fadeOut(3000);
     $('#saveBtn').hide();
     $('#mailChangedMessage').hide();
+    $('#status').fadeOut(3000);
 
     function validateEmail($email) {
         var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
@@ -75,4 +76,12 @@ $(document).ready(function () {
             }
         }
     });
+
+    $('#navbarDropdown').mouseover(function () {
+
+        $('#navbarDropdown').dropdown('toggle')
+
+
+    });
+    
 });

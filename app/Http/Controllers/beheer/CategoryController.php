@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $test = $category->save();
 
         if ($test) {
-            return redirect()->action('beheer\CategoryController@index')->with('message', 'Categorie is toegevoegd.');
+            return redirect()->action('beheer\CategoryController@index')->with('success', 'Categorie is toegevoegd.');
         }
     }
 

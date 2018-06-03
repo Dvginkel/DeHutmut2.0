@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    $('#msgSucces').fadeOut(3000);
+
     $('#test').hide();
     $('#postToEdit').on('change', function(){
         var postId = $(this).val();

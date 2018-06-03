@@ -2,20 +2,25 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Draw;
-use Socialite;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use App\Draw;
+use Socialite;
 use FCM;
 use App\Appointment;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
+
 
     /**
      * The attributes that are mass assignable.
@@ -47,7 +52,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class)->withTimestamps();;
     }
     public function faqDeleteAccess()
     {

@@ -27,11 +27,12 @@
   <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
   <!--<script src="../js/bugReport.js" ></script>-->
-  <!--     <script src="../js/misc.js" ></script> -->
-  <script src="{{ URL::asset('/js/misc.js') }}"></script>
+      <!-- <script src="../js/misc.js" ></script> -->
+  <script src="{{ URL::asset('js/misc.js') }}"></script>
 </head>
 
 <body>
+    
   @include('layouts.navbar')
   <main role="main">
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -40,13 +41,6 @@
     </div>
     <br>
     <div class="container" id="content">
-      @if (session('status'))
-      <div class="alert alert-success justify-content-center align-items-center" id="msgSuccess">
-        {{ session('status') }}
-      </div>
-      @endif
-
-      <!-- Example row of columns -->
 
       @yield('content')
       <hr>
@@ -55,5 +49,5 @@
     <!-- /container -->
 
   </main>
-
+ 
   @include ('layouts.footer')

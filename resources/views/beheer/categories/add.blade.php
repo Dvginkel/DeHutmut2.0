@@ -1,12 +1,5 @@
-@extends('beheer.master') @section('content') @if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+@extends('beheer.master') @section('content') 
+
 <meta name="csrf-token" content="{{ csrf_token() }}"> @if(!empty($category))
 <form method="post" action="/beheer/categories/{{$category->id}}">
     @csrf

@@ -62,3 +62,15 @@ Route::get('posts/{id}', function ($id) {
     // this will return a JSON structure. This will be cleaned up later.
     return Post::findOrFail($id);
 });
+
+
+Route::POST('user/delete', function(Request $id){
+    
+    $user = App\User::findOrFail($id)->first();
+
+    if($user){
+        $user->delete();
+    }
+    $msg = ['message', 'Gebruiker is verwijderd.'];
+    return json_encode($msg);
+});

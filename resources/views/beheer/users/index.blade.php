@@ -1,4 +1,5 @@
 @extends('beheer.master') @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <h2>Gebruikers overzicht</h2>
 <div class="row">
   <div class="table-responsive">
@@ -7,36 +8,58 @@
       @foreach($users as $user)
       <tr>
         <td>
-          <a class="btn btn-primary btn-block" data-toggle="collapse" href="# {{ $user->id }}" role="button" aria-expanded="false"
-            aria-controls=" {{ $user->id }}">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#{{ $user->id }}">
             {{ $user->name }}
-          </a>
-          <div class="collapse" id=" {{ $user->id }}">
-            <div class="card card-body">
-              <h4>Gebruiker Gegevens</h4>
-              <form>
-                <div class="form-group">
-                  <label for="name">Naam</label>
-                  <input type="text" class="form-control" disabled id="name" value="{{ $user->name}}" aria-describedby="name" placeholder="Naam">
-                </div>
-                <div class="form-group">
-                  <label for="email">E-mailadres</label>
-                  <input type="email" class="form-control" id="email" placeholder="Emailadres" value="{{ $user->email }}">
-                </div>
-                <div class="form-group">
-                  <label for="member">Lid sinds</label>
-                  <input type="text" class="form-control" disabled id="member" value="{{ $user->created_at }}" aria-describedby="member" placeholder="Naam">
-                </div>
-                <!--  <button type="submit" class="btn btn-primary">Submit</button> -->
-              </form>
+          </button>
 
-              <hr>
-              <h4>Acties</h4>
-              <div>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-sm btn-outline-danger mr-1">Verwijderen</button>
-                  <button type="button" class="btn  btn-sm btn-outline-info mr-1">Uitschakelen</button>
-                  <button type="button" class="btn  btn-sm btn-outline-danger">Blokkeren</button>
+          <!-- Modal -->
+          <div class="modal fade" id="{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="{{ $user->id }}" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Gebruiker Gegevens: {{ $user->name }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <p class="ml-1">Algemene Gegevens</p>
+                    <div class="row border mb-3 card bg-light" id="general">
+                      <div class="col-md-3">Naam</div>
+                      <div class="col-md-9">{{ $user->name }}</div>
+                      <div class="col-md-3">E-mailadres</div>
+                      <div class="col-md-9">{{ $user->email }}</div>
+                      <div class="col-md-3">Lid Sinds</div>
+                      <div class="col-md-9">{{ $user->created_at->format('d-m-Y H:i:s') }}</div>
+                    </div>
+                    @if(!empty($user->roles))
+                    <p class="ml-1">Rechten</p>
+                    <div class="row border card bg-light mb-3" id="Rechten">
+                      <div class="col-md-12">
+                        @foreach($user->roles as $role)
+                        <div class="form-check">
+                          <input type="checkbox" checked class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">{{ $role->name }}</label>
+                        </div>
+                        @endforeach
+                      </div>
+                    </div>
+                    @endif
+                    <p class="ml-1">Acties</p>
+                    <div class="row border p-3 mb-3 card bg-light" id="Rechten">
+                      <div class="btn-group ml-auto mr-auto" id="Acties" role="group" aria-label="Basic example">
+                        <button class="btn btn-outline-danger delete" value="{{ $user->id }}">Verwijderen</button>
+                        <button class="btn btn-outline-dark block" value="{{ $user->id }}">Blokkeren</button>
+                        <button class="btn btn-outline-warning deactivate" value="{{ $user->id }}">Deactiveren</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
               </div>
             </div>

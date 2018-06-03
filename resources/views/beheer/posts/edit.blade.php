@@ -1,4 +1,4 @@
-<script src="../../../js/posts.js">
+<script src="{{ URL::asset('js/posts.js') }}"></script>
 </script>
 <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#editPost" aria-expanded="true"
     aria-controls="editPost">
@@ -17,7 +17,7 @@
         @endforeach
     </select>
     <div id="test">
-        <form method="post" action="/beheer/posts/">
+        <form method="post" action="/beheer/posts/{{ $post->id }}/edit">
             @csrf @if(!empty($post))
             <input type="hidden" name="post_id" id="post_id" value="{{ $post->id }}"> @endif
             <div class="form-group">

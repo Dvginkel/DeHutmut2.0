@@ -30,7 +30,6 @@ class PostController extends Controller
 
     public function update(Request $request)
     {
-        return $request;
         $title = $request->titleEdit;
         $message = $request->textarea;
         $post_id = $request->post_id;
@@ -41,6 +40,6 @@ class PostController extends Controller
             'title' => $title,
             'message' => $message,
         ]);
-        return redirect()->action('beheer\PostController@index');
+        return redirect()->action('beheer\PostController@index')->with('message', 'Bericht is succes vol gewijzigd.');
     }
 }

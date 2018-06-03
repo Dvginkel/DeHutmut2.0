@@ -10,6 +10,14 @@
     background-color: hotpink!important;
 }
 
+#status {
+    position: absolute;
+    z-index: 10;
+    bottom: 20px;
+    right: 10px;
+    left: 10px;
+}
+
 body {
   padding-top: 3.5rem;
   background-color: pink;

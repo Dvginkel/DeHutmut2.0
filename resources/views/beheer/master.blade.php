@@ -23,6 +23,7 @@
   <link href="../../../css/buttons/buttonStyle.css" rel="stylesheet">
   <link href="../../../css/faq.css" rel="stylesheet">
   <script src="../../../js/beheer/checkbox.js"></script>
+  <script src="../../../js/misc.js"></script>
 
 </head>
 
@@ -92,6 +93,10 @@
   <br>
 
   <div class="container-fluid">
+      @include('messages.success')
+      @include('messages.error')
+      @include('messages.warning')
+      
     <div class="row">
       <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
 
