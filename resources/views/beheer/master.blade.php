@@ -86,6 +86,12 @@
             Nieuwsberichten
           </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/beheer/faq">
+              <span data-feather="users"></span>
+              FAQ
+            </a>
+          </li>
       </ul>
     </div>
   </nav>

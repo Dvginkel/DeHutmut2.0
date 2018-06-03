@@ -1,39 +1,28 @@
-@extends('beheer.master') @section('content')
+@extends('beheer.master') 
 
-<!-- Create a navigation for Add, Edit, Delete -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span> Menu
-  </button>
-
-  <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/beheer/faq/add">Toevoegen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Wijzigen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Verwijderen</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<!-- /Create a navigation for Add, Edit, Delete -->
-@if ($errors->any())
-<div class="alert alert-danger">
-  <ul>
-    @foreach ($errors->all() as $error)
-    <li>{{ $error }}</li>
-    @endforeach
-  </ul>
-</div>
-@endif
+@section('content')
 
 <!-- Edit FORM -->
 @if(!empty($faq))
+
+<div class="col-md-12 card bg-light">
+    <h4 class="mt-1 mr-auto ml-auto">Vraag Aanpassen</h4>
+        <form method="post" action="/beheer/faq">
+            @csrf
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="question">Vraag</label>
+                    <input type="text" class="form-control" id="question" placeholder="Titel voor de vraag.">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="anwser">Antwoord</label>
+                    <input type="text" class="form-control" id="anwser" placeholder="Antwoord">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right mb-3">Toevoegen</button>
+        </form>
+    </div>
+
 
 <form method="post" action="/beheer/faq/" id="faqForm">
   @csrf

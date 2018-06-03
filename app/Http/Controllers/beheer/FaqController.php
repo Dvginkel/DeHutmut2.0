@@ -27,8 +27,8 @@ class FaqController extends Controller
     public function update(Request $request)
     {
         #return $request;
-        $question = $request->faqQuestion;
-        $anwser = $request->faqAnwser;
+        $question = $request->question;
+        $anwser = $request->anwser;
 
         $updateFaq = Faq::where('id', '=', $request->faqId)->update([
             'question' => $question,
@@ -51,5 +51,18 @@ class FaqController extends Controller
         } else {
             return redirect()->action('beheer\FaqController@index')->with('status', 'Je hebt geen toegang tot deze functie.');
         }
+    }
+
+    public function create(Request $request)
+    {
+        $test = Faq::create($request->all());
+        if($test)
+        {
+            return redirect()->action('beheer\FaqController@index')->with('success', 'Vraag is toegevoegd aan de website.');
+        } else {
+            return redirect()->action('beheer\FaqController@index')->with('error', 'De vraag kon nu niet toegevoegd worden. Probeer het later nog eens.');
+        }
+        
+        
     }
 }

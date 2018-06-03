@@ -25,11 +25,13 @@ Route::POST('/posts', 'beheer\PostController@create');
 
 
 Route::get('/faq', 'beheer\FaqController@index');
-Route::post('/faq', 'beheer\FaqController@update');
-Route::get('/faq/add', 'beheer\FaqController@create');
-Route::get('/faq/{id}/edit', 'beheer\FaqController@show');
-Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
-Route::get('/faq/{id}/restore', 'beheer\FaqController@restore');
+Route::POST('/faq', 'beheer\FaqController@create');
+
+// Route::post('/faq', 'beheer\FaqController@update');
+// Route::get('/faq/add', 'beheer\FaqController@create');
+// Route::get('/faq/{id}/edit', 'beheer\FaqController@show');
+// Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
+// Route::get('/faq/{id}/restore', 'beheer\FaqController@restore');
 
 
 
