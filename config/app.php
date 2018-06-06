@@ -152,6 +152,7 @@ return [
         LaravelFCM\FCMServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Unisharp\Ckeditor\ServiceProvider::class,
+        'Collective\Html\HtmlServiceProvider',
 
         /*
          * Package Service Providers...
@@ -217,6 +218,8 @@ return [
         'Image' => 'Intervention\Image\Facades\Image',
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 

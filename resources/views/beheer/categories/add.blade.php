@@ -1,31 +1,120 @@
-@extends('beheer.master') @section('content') 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+    Toevoegen
+</button>
 
-<meta name="csrf-token" content="{{ csrf_token() }}"> @if(!empty($category))
-<form method="post" action="/beheer/categories/{{$category->id}}">
-    @csrf
-    <div class="form-group">
-        <span class="input-group-addon">
-            <img src="{{ $category->photo }}" name="photo" id="photo" class="img-fluid rounded mx-auto d-block" alt="{{ $category->name}}">
-        </span>
-    </div>
-    <div class="form-group">
-        <label for="categorieName">Categorie naam</label>
-        <input type="text" class="form-control" id="categorieName" aria-describedby="categorieName" name="name" value="{{ $category->name}}">
-    </div>
-    <div class="form-group">
-        <label for="categoryDescription">Omschrijving</label>
-        <input type="text" class="form-control" id="categoryDescription" aria-describedby="categoryDescription" name="description"
-            value="{{ $category->description}}">
-    </div>
-    <div class="form-group mb-3">
-        <input id="categoryActive" class="form-input" name="active" type="checkbox" value="{{ $category->id }}" @if($category->active == 1) checked=checked @endif >
-        <label id="lblActive" class="form-check-label" for="categoryActive">Categorie Actief</label>
-        <small>
-            <br>
-            <strong>Als vinkje uitstaat, Is de categorie uitgeschakeld.</strong>
-        </small>
-    </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Hoofd Categorie Toevoegen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newCategory">
+                    Hoofd Categorie Toevoegen
+                </button>
 
-    <button type="submit" class="btn btn-primary pull-right mb-5">Wijzigingen Opslaan</button>
-</form>
-@endif @endsection
+                <!-- Modal -->
+                <div class="modal fade" id="newCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Hoofd Categorie Toevoegen</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <!-- <form method="post" action="/beheer/categories/" > -->
+                                {{ Form::open(['method' => 'post', 'route' => 'categories', 'files' => true]) }} @csrf
+                                <div class="form-group">
+                                    <span class="input-group-addon">
+
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="categorieName">Categorie naam</label>
+                                    <input type="text" class="form-control" id="categorieName" aria-describedby="categorieName" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoryDescription">Omschrijving</label>
+                                    <input type="text" class="form-control" id="categoryDescription" aria-describedby="categoryDescription" name="description">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="photo" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Kies afbeelding voor de nieuwe categorie.</label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block">Categorie Toevoegen</button>
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newCategory">Annuleren</button>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newSubCategory">
+                    Sub Categorie Toevoegen
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="newSubCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Sub Categorie Toevoegen</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="mainCat">Kies Hoofd Categorie</label>
+                                <select class="selectpicker form-control" id="mainCat">
+                                    @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <meta name="csrf-token" content="{{ csrf_token() }}">
+                                <!-- <form method="post" action="/beheer/categories/" > -->
+                                {{ Form::open(['method' => 'post', 'route' => 'addsubcat', 'files' => true]) }} @csrf
+                                
+                                <div class="form-group">
+                                    <label for="categorieName">Categorie naam</label>
+                                    <input type="text" class="form-control" id="categorieName" aria-describedby="categorieName" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoryDescription">Omschrijving</label>
+                                    <input type="text" class="form-control" id="categoryDescription" aria-describedby="categoryDescription" name="description">
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="subCatPhoto" id="subCatPhoto">
+                                        <label class="custom-file-label" for="subCatPhoto">Kies afbeelding voor de nieuwe categorie.</label>
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-block">Sub Categorie Toevoegen</button>
+                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newSubCategory">Annuleren</button>
+                                {{ Form::close() }}
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModalCenter">Annuleren</button>
+                </div>
+            </div>
+        </div>

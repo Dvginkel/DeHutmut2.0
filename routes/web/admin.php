@@ -11,10 +11,12 @@ Route::get('/products/{id}/delete', 'beheer\ProductController@delete');
 Route::POST('/products', 'beheer\ProductController@create');
 Route::POST('/products/{id}', 'beheer\ProductController@update');
 
-Route::get('/categories', 'beheer\CategoryController@index');
+Route::get('/categories', 'beheer\CategoryController@index')->name('categories');
 Route::get('/categories/{id}/edit', 'beheer\CategoryController@edit');
-Route::POST('/categories/{id}', 'beheer\CategoryController@update');
 Route::POST('/categories', 'beheer\CategoryController@create');
+Route::POST('/categories/subcat', 'beheer\CategoryController@store')->name('addsubcat');
+Route::POST('/categories/{id}', 'beheer\CategoryController@update');
+
 
 Route::POST('/categories/{id}/disable', 'beheer\CategoryController@disable');
 Route::get('/categories/{id}/delete', 'beheer\CategoryController@delete');

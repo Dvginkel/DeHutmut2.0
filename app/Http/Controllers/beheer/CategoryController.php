@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categories;
 use App\subCategories;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Carbon;
 
 class CategoryController extends Controller
 {
@@ -27,14 +29,29 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        $catNameToSlug = strtolower($request->catName);
+        $categoryName = $request->name;
+        $categoryDescription = $request->description;
+
+        $currentDT = Carbon\Carbon::now()->format('d_M_Y_H_i_s');
+
+        if ($request->hasFile('photo')) {
+            if ($request->file('photo')->isValid()) {
+                $path = $request->file('photo')->storeAs('public/store/categories/',  '' .$categoryName. '_'.$currentDT.'.jpg');
+                $categoryCoverImage = str_replace('public','storage', $path);
+            } 
+        } else {
+            $categoryCoverImage = "storage/store/noimage.png";
+            // Notify developer / designer. An image has to be created for added category.
+        }
+       
+        $catNameToSlug = strtolower($categoryName);
         $slug = str_replace(" ", '', $catNameToSlug);
 
         $category = new Categories;
-        $category->name = $request->catName;
+        $category->name = $categoryName;
         $category->slug = $slug;
-        $category->description = $request->catDescription;
-        $category->photo = '/storage/store/noimage.png';
+        $category->description = $categoryDescription;
+        $category->photo = $categoryCoverImage;
         $category->active = 1;
         $test = $category->save();
 
@@ -44,18 +61,26 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store Sub Category.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        # dd(request());
-        $catType = request('CatType');
-        $belongsToCat = request('belongsToCat');
-        $catName = request('catName');
-        $catDescription = request('catDescription');
+        dd($request);
+
+        $currentDT = Carbon\Carbon::now()->format('d_M_Y_H_i_s');
+
+        if ($request->hasFile('photo')) {
+            if ($request->file('photo')->isValid()) {
+                $path = $request->file('photo')->storeAs('public/store/categories/',  '' .$categoryName. '_'.$currentDT.'.jpg');
+                $categoryCoverImage = str_replace('public','storage', $path);
+            } 
+        } else {
+            $categoryCoverImage = "storage/store/noimage.png";
+            // Notify developer / designer. An image has to be created for added category.
+        }
 
         // Check what we have to add new cat or sub cat
         if ($catType === "subCat") {
@@ -64,7 +89,7 @@ class CategoryController extends Controller
                 'name' => $catName,
                 'description' => $catDescription,
                 'slug' => strtolower($catName),
-                'photo' => '/storage/store/noimage.png',
+                'photo' => $categoryCoverImage,
                 'active' => '1',
                 'categories_id' => $belongsToCat
             ]);
