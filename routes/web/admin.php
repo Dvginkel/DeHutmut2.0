@@ -26,6 +26,8 @@ Route::POST('/posts', 'beheer\PostController@create');
 
 Route::get('/faq', 'beheer\FaqController@index');
 Route::POST('/faq', 'beheer\FaqController@create');
+Route::POST('/faq', 'beheer\FaqController@update');
+Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
 
 // Route::post('/faq', 'beheer\FaqController@update');
 // Route::get('/faq/add', 'beheer\FaqController@create');
