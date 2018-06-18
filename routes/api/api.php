@@ -53,6 +53,11 @@ Route::get('size/{id}', function ($id) {
     return Size::where('size', '=', $id)->get();
 });
 
+Route::get('age/{age}', function ($id) {
+    //return Size::where('size','=',$id)->pluck('age');
+    return Size::where('age', '=', $id)->get();
+});
+
 Route::get('faq/{id}', function ($id) {
     return Faq::where('id', '=', $id)->first();
 });

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
+use App\Todo;
 
 class UsersController extends Controller
 {
@@ -18,10 +19,12 @@ class UsersController extends Controller
     {
         //$users = User::all();
         $users = User::with('roles')->get();
+        $draws = User::with('draws')->get();
+        return $draws;
         //return $users;
 
         $roles = Role::all();
-        return view('beheer.users.index', compact('users', 'roles'));
+        return view('beheer.users.index', compact('users', 'roles', 'todos'));
     }
 
     /**

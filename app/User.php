@@ -13,7 +13,7 @@ use Socialite;
 use FCM;
 use App\Appointment;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use \Cache;
 
 
 class User extends Authenticatable
@@ -106,5 +106,13 @@ class User extends Authenticatable
     public function inbox()
     {
         return $this->hasMany(Appointments::class);
+    }
+
+    public function isOnline()
+    {
+        //return Cache::has('user-is-online-' . $this->id);
+        $test = Cache::has('user-is-online-' . $this->id);
+
+        return $test;
     }
 }

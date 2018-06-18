@@ -4,4 +4,10 @@
 <div class="alert alert-success" id="status">
     {{ session('status') }}
 </div>
-@endif @include('beheer.products.add') @include('beheer.products.overview') @endsection
+@endif 
+
+
+@include('beheer.products.add')
+@include('beheer.products.overview') 
+
+@endsection

@@ -37,8 +37,9 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $user  = Auth()->user();
         $posts = Post::orderBy('created_at', 'desc')
         ->paginate(5);
-        return view('layouts.welcome', compact('posts'));
+        return view('layouts.welcome', compact('posts', 'user'));
     }
 }

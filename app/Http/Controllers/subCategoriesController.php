@@ -60,4 +60,14 @@ class subCategoriesController extends Controller
                 break;
         }
     }
+
+    public function countProducts($id)
+    {
+       $tests = App\Products::with('subCategories')
+       ->where('cat_id', $id)
+       ->get();
+
+       return $tests;
+
+    }
 }

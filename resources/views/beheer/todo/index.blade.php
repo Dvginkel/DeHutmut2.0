@@ -18,40 +18,46 @@
         <td>{{ $todo->name }}</td>
         <td>
           @if(isset($todo)) @if($todo->user_id === auth()->user()->id)
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#{{ $todo->id }}" aria-expanded="false"
-            aria-controls="{{ $todo->id }}">
-            View
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#todoDetails">
+            Bekijken
           </button>
-          @endif @endif
-        </td>
-        <div class="collapse" id="{{ $todo->id }}">
-          <div class="card">
-            <div class="card-header">
-              {{ $todo->title }}
-            </div>
-            <div class="card-body">
-              <!-- <h5 class="card-title">Special title treatment</h5> -->
-              <p class="card-text">{{ $todo->description }}</p>
-              <div class="form-group">
-                <form action="/beheer/todo/{{$todo->id }}">
-                  <input type="hidden" name="_method" value="PATCH">
-                  <button class="btn btn-primary btn-block">Mark as Complete</button>
-                </form>
+          <!-- Modal -->
+          <div class="modal fade" id="todoDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">{{ $todo->title }}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  {{ $todo->description }}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Completed</button>
+                  <button type="button" class="btn btn-danger">Verwijderen</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
+          @endif @endif
+        </td>
       </tr>
-      @endforeach
+
       <thead>
         <tr>
-          <th scope="col">ÍD</th>
+          <th scope="col">ID</th>
           <th scope="col">Title</th>
           <th scope="col">Wie</th>
           @if($todo->user_id === auth()->user()->id)
           <th scope="col">Actions</th>
           @endif
         </tr>
+        @endforeach
       </thead>
     </tbody>
   </table>

@@ -5,17 +5,17 @@ Route::get('/', 'beheer\ControlPanelController@index')->name('adminIndex');
 
 Route::get('/products', 'beheer\ProductController@index')->name('ProductsIndex');
 Route::get('/products/create', 'beheer\ProductController@create')->name('createProduct');
-Route::get('/products/{id}/edit', 'beheer\ProductController@edit');
+Route::get('/products/edit', 'beheer\ProductController@edit')->name('productEdit');
 Route::get('/products/{id}', 'beheer\ProductController@show');
 Route::get('/products/{id}/delete', 'beheer\ProductController@delete');
 Route::POST('/products', 'beheer\ProductController@create');
-Route::POST('/products/{id}', 'beheer\ProductController@update');
+Route::POST('/products/edit/{id}', 'beheer\ProductController@update')->name('productUpdate');
 
 Route::get('/categories', 'beheer\CategoryController@index')->name('categories');
 Route::get('/categories/{id}/edit', 'beheer\CategoryController@edit');
 Route::POST('/categories', 'beheer\CategoryController@create');
 Route::POST('/categories/subcat', 'beheer\CategoryController@store')->name('addsubcat');
-Route::POST('/categories/{id}', 'beheer\CategoryController@update');
+Route::POST('/categories/{id}', 'beheer\CategoryController@update')->name('updateCat');
 
 
 Route::POST('/categories/{id}/disable', 'beheer\CategoryController@disable');

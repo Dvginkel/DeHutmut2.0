@@ -11,4 +11,6 @@ class Categories extends Model
         //return $this->hasMany(Categories::class,  'id');
         return $this->hasMany(subCategories::class);
     }
+
+    
 }

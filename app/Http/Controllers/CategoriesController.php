@@ -18,15 +18,22 @@ class CategoriesController extends Controller
     public function index()
     {
         $mainCategories = Categories::with('subCategories')
-      ->orderBy('name', 'ASC')
-      ->get();
+        ->orderBy('name', 'ASC')
+        ->get();
         return view('store.index', compact('mainCategories', 'subCategories'));
     }
 
     public function subCategory($category)
     {
         $categories = subCategories::find($id)->subCategories;
+        
         $slug = Categories::find($id)->where('id', '=', $id)->first();
         return view('store.show', compact('categories', 'slug'));
+    }
+
+    public function countProducts($id)
+    {
+        $count = Product::where('cat_id', $id)->count();
+        return $count;
     }
 }

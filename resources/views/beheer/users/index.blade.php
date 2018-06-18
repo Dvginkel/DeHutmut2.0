@@ -50,25 +50,43 @@
                     <p class="ml-1">Acties</p>
                     <div class="row border p-3 mb-3 card bg-light" id="Rechten">
                       <div class="btn-group ml-auto mr-auto" id="Acties" role="group" aria-label="Basic example">
-                        <button class="btn btn-outline-danger delete" value="{{ $user->id }}">Verwijderen</button>
-                        <button class="btn btn-outline-dark block" value="{{ $user->id }}">Blokkeren</button>
-                        <button class="btn btn-outline-warning deactivate" value="{{ $user->id }}">Deactiveren</button>
+                        <button class="btn btn-sm btn-outline-danger delete" value="{{ $user->id }}">Verwijderen</button>
+                        <button class="btn btn-sm btn-outline-dark block" value="{{ $user->id }}">Blokkeren</button>
+                        <button class="btn btn-sm btn-outline-warning deactivate" value="{{ $user->id }}">Deactiveren</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-dismiss="#{{ $user->id }}" data-target="#lootjes">
+                          Lootjes
+                        </button>
+                        <div class="modal fade bg-light" id="lootjes" tabindex="-1" role="dialog" aria-labelledby="{{ $user->id }}" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Lootjes: {{ $user->name }}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                             
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
         </td>
       </tr>
       @endforeach
       </tbody>
     </table>
+    </div>
   </div>
-</div>
-@endsection
+  @endsection

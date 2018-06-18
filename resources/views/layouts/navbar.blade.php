@@ -12,18 +12,18 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/actievelotingen">Actieve Lotingen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/faq">FAQ</a>
+      </li>
       <div class="dropdown-divider"></div>
       <li class="nav-item">
         <a class="nav-link" href="/store">De Winkel</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/winnaars">Winnaars</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/actievelotingen">Actieve Lotingen</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/faq">FAQ</a>
       </li>
       <div class="dropdown-divider"></div>
     </ul>

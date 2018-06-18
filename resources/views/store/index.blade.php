@@ -17,10 +17,13 @@
                 </div>
             </div>
         </div>
+        
         <br> @endforeach @endif
     </div>
 
     <hr>
+
+    <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=31657022857&text=Hey Doreth, Ik wil graag afspraak maken voor mijn gewonnen spullen.">Afspraak maken</a>
 
 </div>
 <!-- /container -->
