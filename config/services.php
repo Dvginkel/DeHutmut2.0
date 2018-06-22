@@ -36,9 +36,9 @@ return [
     ],
     'facebook' => [
         //'client_id' => '160283118133762',
-        'client_id' => '1522748544418563',
+        'client_id' => '160283118133762',
         //'client_secret' => 'c6879fb4ae2c354d4d64f1170d6b6753',
-        'client_secret' => '61a139fd7e596d044c39f3e0e2762000',
+        'client_secret' => 'c6879fb4ae2c354d4d64f1170d6b6753',
         'redirect' => 'https://dev.dehutmut.nl/callback',
     ],
 

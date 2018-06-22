@@ -11,8 +11,8 @@
     </div>
         @foreach($products as $product)
         <tr>
-        <div class="card bg-light">
-            <img class="card-img-top" src="{{ $product->photo }}" alt="{{ $product->name }} ">
+        <div class="card border-1">
+            <img class="img img-responsive" src="{{ $product->photo }}" alt="{{ $product->name }} ">
             <div class="card-body">
               <h5 class="card-title">{{ $product->description }} </h5>
               <p class="card-text">
@@ -63,15 +63,15 @@
                           {{ Form::text('photo', null, ['class' => 'form-control']) }}                          
                           {{ Form::label('active', 'Product Actief (Ja/Nee)') }}
                           @if($product->active  === 1)
-                          {{ Form::checkbox('agree', 1, true, ['class' => 'form-control']) }}
+                          {{ Form::checkbox('active', 1, true, ['class' => 'form-control']) }}
                           @else 
-                          {{ Form::checkbox('agree', 1, false, ['class' => 'form-control']) }}
+                          {{ Form::checkbox('active', 1, false, ['class' => 'form-control']) }}
                           @endif
                           {{ Form::label('created_at', 'Toegevoegd op') }}
                           {{ Form::text('created_at', null, ['class' => 'form-control', 'readonly' => true]) }}
                           {{ Form::label('updated_at', 'Laatst gewijzigd op') }}
                           {{ Form::text('updated_at', null, ['class' => 'form-control readonly', 'readonly' => true ]) }}
-                          {{ Form::submit('Wijzigen Opslaan', array('class' => 'btn btn-primary mt-3')) }}
+                          {{ Form::submit('Wijzigen Opslaan', array('class' => 'btn btn-primary m-1')) }}
                           {!! Form::close() !!}
                         </div>
                       </div>
@@ -81,9 +81,9 @@
                 </div>
               </div>
               @if($product->active === 0)
-              <button type="button" class="btn btn-primary">Enable</button>
+              <button type="button" class="btn btn-primary m-1">Enable</button>
               @endif
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-danger m-1">Delete</button>
             </div>
           </div>   
           <br>   

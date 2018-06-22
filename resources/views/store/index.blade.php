@@ -6,7 +6,9 @@
         <div class="col-md-12 ">
             <h1>De Hutmut Winkel </h1>
         </div>
+
         @if(!empty($mainCategories)) @foreach($mainCategories as $mainCategory)
+
         <div class="col-md-4 mb-3">
             <div class="card">
                 <p class="card-title ml-auto mr-auto">{{ $mainCategory->name }}</p>
@@ -17,14 +19,9 @@
                 </div>
             </div>
         </div>
-        
         <br> @endforeach @endif
     </div>
-
     <hr>
-
-    <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=31657022857&text=Hey Doreth, Ik wil graag afspraak maken voor mijn gewonnen spullen.">Afspraak maken</a>
-
 </div>
 <!-- /container -->
 

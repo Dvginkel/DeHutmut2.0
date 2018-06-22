@@ -9,8 +9,11 @@
         <div class="blog-post">
           <h2 class="blog-post-title mt-1">{{ $post->title }}</h2>
           @if($post->updated_at != $post->created_at)
-          <p class="blog-post-meta">{{ $post['updated_at']->format('d-m-Y H:i') }} by
+          <p class="blog-post-meta">{{ $post['updated_at']->format('d-m-Y H:i') }} 
+            @if($post->user->name)
+            by
             <a href="#">{{ $post->user->name }}</a>
+            @endif
           </p>
           @else
           <p class="blog-post-meta">{{ $post['created_at']->format('d-m-Y H:i') }} by

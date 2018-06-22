@@ -67,7 +67,15 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                             
+
+
+                             @foreach($draws as $draw)
+                           <li>   {{ $draw }}</li>
+                           @foreach($draw as $lootje)
+
+                           <li>{{ $lootje }}   </li>
+                           @endforeach
+                             @endforeach
                               </div>
                             </div>
                           </div>

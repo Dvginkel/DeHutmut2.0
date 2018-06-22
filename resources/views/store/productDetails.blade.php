@@ -16,6 +16,7 @@
         <a href="/store">
             <button class="btn btn-primary">Terug naar de Winkel</button>
         </a>
+
     </div>
     <div class="col-md-12 ml-auto mr-auto">
         {{ $products->links()}}

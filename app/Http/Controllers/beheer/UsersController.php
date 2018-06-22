@@ -19,12 +19,10 @@ class UsersController extends Controller
     {
         //$users = User::all();
         $users = User::with('roles')->get();
-        $draws = User::with('draws')->get();
-        return $draws;
-        //return $users;
-
+        $draws = User::with('draws')->where('user_id','=', Auth()->user()->id)->get();
+        //$draws = User::with('draws')->get();
         $roles = Role::all();
-        return view('beheer.users.index', compact('users', 'roles', 'todos'));
+        return view('beheer.users.index', compact('users', 'roles', 'todos', 'draws'));
     }
 
     /**
