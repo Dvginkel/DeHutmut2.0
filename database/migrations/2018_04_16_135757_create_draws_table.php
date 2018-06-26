@@ -15,9 +15,8 @@ class CreateDrawsTable extends Migration
     {
         Schema::create('draws', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_id');
             $table->integer('product_id');
-            $table->string('einde_loting');
+            $table->dateTime('einde_loting');
             $table->integer('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

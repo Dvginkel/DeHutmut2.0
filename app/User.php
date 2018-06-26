@@ -45,7 +45,7 @@ class User extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 
     public function draws()
     {
-        return $this->hasMany(Draw::class);
+        return $this->hasMany(Ticket::class);
     }
 
     public function todo()
@@ -117,5 +117,10 @@ class User extends Model implements \Illuminate\Contracts\Auth\Authenticatable
         $test = Cache::has('user-is-online-' . $this->id);
 
         return $test;
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

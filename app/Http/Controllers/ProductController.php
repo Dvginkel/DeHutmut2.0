@@ -38,7 +38,7 @@ class ProductController extends Controller
         // Filter out products where user has a draw on.
         $user = auth()->user();
         #dd($user->draws->id);
-        $connectedProductIds = $user->draws->pluck('product_id')->toArray();
+        $connectedProductIds = $user->tickets->pluck('draw_id')->toArray();
 
         $products = Product::whereNotIn('id', $connectedProductIds)
         ->where('cat_id', '=', $id)

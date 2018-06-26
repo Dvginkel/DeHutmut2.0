@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use App\Ticket;
 use App\Draw;
 use Carbon\Carbon;
+use App\User;
 
 class drawWinners extends Command
 {
@@ -43,28 +44,46 @@ class drawWinners extends Command
     {
         // Current Date and Time
         $currdt = Carbon::now();
-        // Get tickets that are expired.
-        // $expiredTickets = Ticket::where('einde_loting', '<', $currdt)
-        // ->select('id', 'product_id', 'einde_loting')
-        // ->get()
-        // ->toArray();
+        // Get expired draws
+        $expiredDraws  = Draw::where('einde_loting', '<', $currdt)->get();
 
-        //$ticket = Ticket::where('einde_loting', '<', $currdt)->get();
-        $tests = Ticket::where('einde_loting', '<', $currdt)->pluck('product_id')->toArray();
+        //echo $expiredDraws;
+        // Get tickets for each draw
+        foreach($expiredDraws as $draw)
+        {
+            $draw_id = $draw->id;
+            $userId[] = Ticket::where('draw_id', '=', $draw_id)->pluck('user_id')->toArray();
+           
+        }
+        //dd(count($userId));
+
+        foreach($userId as $draw)
+        {
+            dd($draw);
+        }
+
+        // Draw a single winner for each draw
+        $winner = array_rand($userId, 1);
+
+        // Notify user of winning
+
+        // notify admins of winning
 
         
+       
+        
+        //echo $expiredDraws;
 
-        foreach($tests as $test)
+        foreach($expiredDraws as $draw)
         {
-            //echo $test;
-            $users = Draw::where('product_id', $test)
-            ->join('users', 'users.id', '=', 'draws.user_id')
-            ->select('draws.id', 'draws.product_id', 'draws.einde_loting', 'users.name', 'users.id', 'users.email')
-            ->get();
-            //echo $users;
+            
+            // $userTickets = $draw->ticket;
             
             
-            
+            // foreach($userTickets as $test)
+            // {
+            //     echo $test;
+            // }
         }
          
 

@@ -27,6 +27,7 @@ class subCategoriesController extends Controller
             ->orderBy('id', 'asc')
             ->get();
         $cat_id = $id;
+       
         switch ($slug) {
             case 'allesopeenhoop':
                  // Get SubCategories

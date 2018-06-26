@@ -9,7 +9,6 @@
        
         {{ $subCategories }}
         <div class=" col-md-12 ml-auto mr-auto">
-            {{ $subCategories->links()}}
         </div>
         
         <br> @if($subCategories->isEmpty())
@@ -26,7 +25,7 @@
                         <span class="badge badge-success">
                             @php 
                             $user = auth()->user();
-                            $connectedProductIds = $user->draws->pluck('product_id')->toArray();
+                            $connectedProductIds = $user->tickets->pluck('draw_id')->toArray();
                                 $products = App\Product::whereNotIn('id', $connectedProductIds)
                                 ->where('cat_id', '=', $subCategorie->id)
                                 ->where('active', '=', 1)

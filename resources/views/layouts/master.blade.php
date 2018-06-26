@@ -35,12 +35,16 @@
     
   @include('layouts.navbar')
   <main role="main">
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="container mt-10" id="logo">
       <img src="https://www.dehutmut.nl//images/hutmutlogo_klein.png" class="img-fluid rounded mx-auto d-block">
     </div>
     <br>
+    <div class="er">
+        @include('messages.success') @include('messages.error') @include('messages.warning')
+    </div>
+    
     <div class="container" id="content">
+       
 
       @yield('content')
       <hr>

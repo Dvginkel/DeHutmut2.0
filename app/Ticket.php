@@ -4,6 +4,7 @@ namespace App;
 
 use App\Model;
 use App\Draw;
+use App\Product;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
