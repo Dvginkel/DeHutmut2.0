@@ -4,6 +4,7 @@ Route::get('/', 'HomeController@welcome')->name('home');
 Route::get('/winnaars', 'WinnersController@index');
 Route::get('/faq', 'FaqController@index');
 Route::get('/actievelotingen', 'DrawController@index');
+Route::get('/cookies', 'HomeController@cookies');
 
 
 Route::get('/store', 'CategoriesController@index')->name('store'); //  /store contains main categories

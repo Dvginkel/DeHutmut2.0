@@ -1,4 +1,4 @@
-<footer class="container ml-auto mr-auto">
+<footer class="container ml-auto mr-auto mt-3">
   <div>&copy; De Hutmut 2017-2018</div>
 </footer>
 

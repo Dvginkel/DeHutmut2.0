@@ -27,12 +27,40 @@
   <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
   <!--<script src="../js/bugReport.js" ></script>-->
-      <!-- <script src="../js/misc.js" ></script> -->
+  <!-- <script src="../js/misc.js" ></script> -->
   <script src="{{ URL::asset('js/misc.js') }}"></script>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+  />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+  <script>
+    window.addEventListener("load", function () {
+      window.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#64386b",
+            "text": "#ffcdfd"
+          },
+          "button": {
+            "background": "#f8a8ff",
+            "text": "#3f0045"
+          }
+        },
+        "position": "bottom-right",
+        "type": "opt-out",
+        "content": {
+          "message": "De Hutmut maakt gebruikt van cookies voor lotingen en statistieken.",
+          "dismiss": "Begrepen",
+          "deny": "Weigeren",
+          "link": "Meer info",
+          "href": "https://dev.dehutmut.nl/cookies"
+        }
+      })
+    });
+  </script>
 </head>
 
 <body>
-    
+
   @include('layouts.navbar')
   <main role="main">
     <div class="container mt-10" id="logo">
@@ -40,18 +68,14 @@
     </div>
     <br>
     <div class="er">
-        @include('messages.success') @include('messages.error') @include('messages.warning')
+      @include('messages.success') @include('messages.error') @include('messages.warning')
     </div>
-    
+
     <div class="container" id="content">
-       
-
       @yield('content')
-      <hr>
-
     </div>
     <!-- /container -->
 
   </main>
- 
+
   @include ('layouts.footer')

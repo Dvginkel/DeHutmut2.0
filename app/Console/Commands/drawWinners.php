@@ -55,12 +55,7 @@ class drawWinners extends Command
             $userId[] = Ticket::where('draw_id', '=', $draw_id)->pluck('user_id')->toArray();
            
         }
-        //dd(count($userId));
 
-        foreach($userId as $draw)
-        {
-            dd($draw);
-        }
 
         // Draw a single winner for each draw
         $winner = array_rand($userId, 1);

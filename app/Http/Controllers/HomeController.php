@@ -43,4 +43,9 @@ class HomeController extends Controller
         ->paginate(5);
         return view('layouts.welcome', compact('posts', 'user'));
     }
+
+    public function cookies()
+    {
+        return view('layouts.cookies');
+    }
 }
