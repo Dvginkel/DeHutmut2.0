@@ -40,7 +40,7 @@ class HomeController extends Controller
     {
         $user  = Auth()->user();
         $posts = Post::orderBy('created_at', 'desc')
-        ->paginate(5);
+        ->simplePaginate(5);
         return view('layouts.welcome', compact('posts', 'user'));
     }
 

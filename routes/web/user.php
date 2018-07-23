@@ -8,3 +8,4 @@ Route::get('/afspraak', 'AccountController@afspraak');
 Route::POST('/afspraak', 'AppointmentsController@create');
 Route::get('/inbox', 'AccountController@inbox');
 Route::POST('/info', 'AccountController@update');
+Route::POST('/messages', 'MessagesController@store');

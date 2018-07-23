@@ -28,7 +28,7 @@
       <div class="dropdown-divider"></div>
     </ul>
     @guest
-    <ul class="navbar-nav ml-auto">
+   <ul class="navbar-nav ml-auto">
       <li>
         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
       </li>

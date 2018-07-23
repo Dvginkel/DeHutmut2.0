@@ -86,7 +86,8 @@ class AccountController extends Controller
     {
         //$messages = Appointments::where("to_user_id", auth()->user()->id)->get();
         $messages = Appointments::with('user')->where('to_user_id', auth()->user()->id)->get();
+        $users = User::all();
         //return $messages;
-        return view('account.inbox', compact('messages'));
+        return view('account.inbox', compact('messages', 'users'));
     }
 }
