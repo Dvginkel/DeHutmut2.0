@@ -31,6 +31,10 @@ Route::POST('/faq', 'beheer\FaqController@create');
 Route::POST('/faq', 'beheer\FaqController@update');
 Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
 
+Route::get('/users', 'beheer\UsersController@index');
+Route::get('/users/{id}/{user}', 'beheer\UsersController@show');
+
+
 // Route::post('/faq', 'beheer\FaqController@update');
 // Route::get('/faq/add', 'beheer\FaqController@create');
 // Route::get('/faq/{id}/edit', 'beheer\FaqController@show');
@@ -41,7 +45,7 @@ Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
 
 Route::get('/todo', 'TodoController@index');
 Route::POST('/todo/{id}', 'TodoController@update');
-Route::get('/users', 'beheer\UsersController@index');
+
 Route::get('/winners', 'beheer\WinnersController@index');
 Route::get('/drawWinner', 'beheer\WinnersController@drawWinner');
 // Route::get('/product/{id}', 'ControlPanelController@getSubCatFromMainCat');

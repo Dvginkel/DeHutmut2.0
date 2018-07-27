@@ -17,13 +17,8 @@ class Draw extends Model
     {
         return $this->belongsTo(User::class);
     }
-    //  public function draws()
-    // {
-    //     //return $this->belongsToMany(User::class);
-    //     return Draw::all();
-    // }
-
-    public function ticket()
+   
+    public function tickets()
     {
         return $this->hasMany(Ticket::class, 'draw_id');
     }

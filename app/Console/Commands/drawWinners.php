@@ -52,13 +52,18 @@ class drawWinners extends Command
         foreach($expiredDraws as $draw)
         {
             $draw_id = $draw->id;
-            $userId[] = Ticket::where('draw_id', '=', $draw_id)->pluck('user_id')->toArray();
+            $userId = Ticket::where('draw_id', '=', $draw_id)->pluck('user_id')->toArray();
+            
+            // Draw a single winner for each draw
+            $winner = array_rand($userId, 1);
+
+            $userInfo = User::where('id', $winner)->pluck('name')->toArray();
+            var_dump($userInfo);
+            
            
         }
+      
 
-
-        // Draw a single winner for each draw
-        $winner = array_rand($userId, 1);
 
         // Notify user of winning
 
