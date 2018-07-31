@@ -22,4 +22,9 @@ class Ticket extends Model
     {
        return $this->hasMany(Draw::class, 'id');
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

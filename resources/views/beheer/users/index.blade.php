@@ -9,7 +9,7 @@
       <tr>
         <td>
        
-            <a href="users/{{ $user->id}}/{{ $user->name }}" class="btn btn-primary"> {{ $user->name }}</a>
+            <a href="/beheer/users/{{ $user->id}}/{{ $user->name }}" class="btn btn-primary"> {{ $user->name }}</a>
        
         </td>
       </tr>

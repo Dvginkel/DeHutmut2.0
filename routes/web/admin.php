@@ -33,6 +33,7 @@ Route::get('/faq/{id}/delete', 'beheer\FaqController@delete');
 
 Route::get('/users', 'beheer\UsersController@index');
 Route::get('/users/{id}/{user}', 'beheer\UsersController@show');
+Route::POST('/users/{id}/disable', 'beheer\UsersController@update');
 
 
 // Route::post('/faq', 'beheer\FaqController@update');

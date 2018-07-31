@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
 use App\Todo;
+use App\Draw;
+use App\Ticket;
+use App\Product;
 
 class UsersController extends Controller
 {
@@ -54,12 +57,20 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        
         // Get user info and display 
-        $user = User::where('id', $id)
-        ->with('tickets')
-        ->get();
-        //return $user;
-        return view('beheer.users.edit', compact('user'));
+        $user = User::where('id', $id)->get();
+        #return $user;
+        $userDraws = auth()->user()->tickets->pluck('draw_id')->toArray();
+        
+        $userDraw = Draw::whereIn('id', $userDraws)->pluck('product_id')->toArray();
+        $productNames = Product::whereIn('id', $userDraw)->paginate(10);
+        #return $productNames;
+      
+        
+        //return $productTest;
+        
+        return view('beheer.users.edit', compact('user', 'productNames'));
     }
 
     /**
@@ -80,9 +91,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        return $request->productId;
     }
 
     /**
