@@ -12,7 +12,7 @@ Route::POST('/products', 'beheer\ProductController@create');
 Route::POST('/products/edit/{id}', 'beheer\ProductController@update')->name('productUpdate');
 
 Route::get('/categories', 'beheer\CategoryController@index')->name('categories');
-Route::get('/categories/{id}/edit', 'beheer\CategoryController@edit');
+Route::get('/categories/{id}/edit', 'beheer\CategoryController@edit')->name('categories.edit');
 Route::POST('/categories', 'beheer\CategoryController@create');
 Route::POST('/categories/subcat', 'beheer\CategoryController@store')->name('addsubcat');
 Route::POST('/categories/{id}', 'beheer\CategoryController@update')->name('updateCat');

@@ -15,7 +15,8 @@
                     </button>
                 </div>
                 <div class="modal-body bg-light">
-                        {{ Form::open() }}
+                        {{  Form::model($categories1, array('route' => array('categories.edit', 1))) }}
+                        
 
                         {{ Form::label('name', 'Kies Categorie') }}
                         {!! Form::select('name', $categories1, null, ['class' => 'form-control']) !!}

@@ -74,6 +74,7 @@
                                                         <form method="post" action="/beheer/users/{{ $item->id}}/disable">
                                                             @csrf
                                                             <input type="hidden" value="{{ $productName->id }}" name="productId">
+                                                            <input type="hidden" value="{{ $item->id }}" name="userId">
                                                             <button class="btn btn-primary">Deactiveren</button>
                                                         </form>
                                                     </td>

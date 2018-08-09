@@ -93,7 +93,13 @@ class UsersController extends Controller
      */
     public function update(Request $request)
     {
-        return $request->productId;
+        // Lootje van de gebruiker uitschakelen
+        
+
+        
+        // Welk product (product_id) moet er uitgezet worden.
+
+        return $request;
     }
 
     /**
