@@ -104,7 +104,6 @@
 
     <div class="row">
       <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
-
         @yield('content')
       </main>
     </div>

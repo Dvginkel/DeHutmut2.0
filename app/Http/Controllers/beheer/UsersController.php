@@ -20,6 +20,7 @@ class UsersController extends Controller
      */
     public function index()
     {
+        \Carbon\Carbon::setLocale('nl_NL');
         //$users = User::all();
         $users = User::with('roles')->get();
         $draws = User::with('draws')->where('id','=', Auth()->user()->id)->get();
@@ -57,18 +58,15 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        
+       
         // Get user info and display 
-        $user = User::where('id', $id)->get();
-        #return $user;
-        $userDraws = auth()->user()->tickets->pluck('draw_id')->toArray();
-        
+        $user = User::where('id', $id)->first();
+        //return $user;
+        $userDraws = $user->tickets->pluck('draw_id')->toArray();
+      
         $userDraw = Draw::whereIn('id', $userDraws)->pluck('product_id')->toArray();
         $productNames = Product::whereIn('id', $userDraw)->paginate(10);
-        #return $productNames;
-      
         
-        //return $productTest;
         
         return view('beheer.users.edit', compact('user', 'productNames'));
     }
@@ -94,12 +92,21 @@ class UsersController extends Controller
     public function update(Request $request)
     {
         // Lootje van de gebruiker uitschakelen
+        $productId = $request->productId;
+        $userId = $request->userId;
         
+        $result = Draw::where('product_id' ,$productId)->first();
+        $drawId = $result->id;
 
+        $disableUserTicket = Ticket::where('draw_id', $drawId)->where('user_id', $userId)->first();
+        $disableUserTicket->active = 0;
+        $disableUserTicket->save();
+        //return $disableUserTicket;
+        $disableUserTicket->delete();
         
-        // Welk product (product_id) moet er uitgezet worden.
+        return redirect()->action('beheer\UsersController@index')->with('success', 'Lootje is succesvol gedeactiveerd.');
 
-        return $request;
+
     }
 
     /**

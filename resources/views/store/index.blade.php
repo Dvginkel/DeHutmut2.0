@@ -20,7 +20,9 @@
             </div>
         </div>
         <br> @endforeach @endif
+       
     </div>
+    {{ $mainCategories->links() }}
     <hr>
 </div>
 <!-- /container -->

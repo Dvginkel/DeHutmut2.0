@@ -1,13 +1,13 @@
- @extends('beheer.master') @section('content') @foreach($user as $item) @endforeach
+ @extends('beheer.master') @section('content')
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <p>Beheer</p>
+        <li class="breadcrumb-item ">
+            <p class="btn btn-primary">Beheer</p>
         </li>
         <li class="breadcrumb-item">
-            <a href="/beheer/users/">Users</a>
+            <a href="/beheer/users/" class="btn btn-primary">Users</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">{{ $item->name }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ $user->name }}</li>
     </ol>
 </nav>
 <div class="container">
@@ -37,15 +37,16 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Naam</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $item->name }}" readonly>
+                                            <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $user->name }}" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput2">E-mailadres</label>
-                                            <input type="email" class="form-control" id="formGroupExampleInput2" value="{{ $item->email }}" readonly>
+                                            <input type="text" class="form-control" id="formGroupExampleInput" value="{{ $user->email }}" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="formGroupExampleInput3">Lids sinds</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput3" value="{{ $item->created_at }}" readonly>
+                                            
+                                            <input type="text" class="form-control" id="formGroupExampleInput" value=" {{ $user->created_at->format('d-m-Y') }}" readonly>
                                         </div>
                                     </form>
                                 </div>
@@ -70,11 +71,12 @@
                                                 @foreach($productNames as $productName)
                                                 <tr>
                                                     <td>{{ $productName->name }}</td>
+                                                    
                                                     <td>
-                                                        <form method="post" action="/beheer/users/{{ $item->id}}/disable">
+                                                        <form method="post" action="/beheer/users/{{ $user->id}}/disable">
                                                             @csrf
                                                             <input type="hidden" value="{{ $productName->id }}" name="productId">
-                                                            <input type="hidden" value="{{ $item->id }}" name="userId">
+                                                            <input type="hidden" value="{{ $user->id }}" name="userId">
                                                             <button class="btn btn-primary">Deactiveren</button>
                                                         </form>
                                                     </td>

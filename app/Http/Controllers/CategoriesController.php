@@ -19,7 +19,8 @@ class CategoriesController extends Controller
     {
         $mainCategories = Categories::with('subCategories')
         ->orderBy('name', 'ASC')
-        ->get();
+        ->paginate(12);
+        
         return view('store.index', compact('mainCategories', 'subCategories'));
     }
 
