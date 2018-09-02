@@ -13,6 +13,7 @@ use App\Winners;
 use App\Draw;
 use App\User;
 use App\Appointments;
+use App\Ticket;
 
 class AccountController extends Controller
 {
@@ -59,12 +60,10 @@ class AccountController extends Controller
 
     public function tickets()
     {
-        $activeTickets =  draw::where('user_id', '=', auth()->user()->id)
-        ->join('products', 'products.id', '=', 'draws.product_id')
-        ->where('draws.active', '=', 1)
-        ->select('draws.*', 'products.name as product_name')
-        ->get();
-        return view('account.tickets', compact('activeTickets'));
+        $activeTickets =  Ticket::where('user_id', '=', auth()->user()->id)->get();
+
+        
+        //return view('account.tickets', compact('activeTickets'));
     }
 
     public function update(Request $request)

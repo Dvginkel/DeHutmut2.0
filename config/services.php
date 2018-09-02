@@ -39,7 +39,7 @@ return [
         'client_id' => '160283118133762',
         //'client_secret' => 'c6879fb4ae2c354d4d64f1170d6b6753',
         'client_secret' => 'c6879fb4ae2c354d4d64f1170d6b6753',
-        'redirect' => 'https://localhost:44300/callback',
+        'redirect' => 'https://hutmut.test/callback',
     ],
 
 ];
