@@ -1,4 +1,5 @@
 <?php
+
 Route::get('/info', 'AccountController@index');
 Route::get('/push', 'AccountController@push');
 Route::get('/tickets', 'AccountController@tickets');

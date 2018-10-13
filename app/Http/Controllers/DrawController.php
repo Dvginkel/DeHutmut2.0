@@ -16,7 +16,7 @@ class DrawController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $activeUserTickets = $user->tickets->pluck('draw_id')->toArray(); // 14 = id of record in draws table
+        $activeUserTickets = $user->draws->pluck('draw_id')->toArray(); // 14 = id of record in draws table
         $activeDraws = Draw::with('product')->get();
         //$activeDraws = Draw::join('products', 'draws.product_id', '=', 'products.id')->get();
 

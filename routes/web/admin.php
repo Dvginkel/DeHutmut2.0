@@ -36,6 +36,7 @@ Route::get('/users/{id}/{user}', 'beheer\UsersController@show');
 Route::POST('/users/{id}/disable', 'beheer\UsersController@update');
 
 
+
 // Route::post('/faq', 'beheer\FaqController@update');
 // Route::get('/faq/add', 'beheer\FaqController@create');
 // Route::get('/faq/{id}/edit', 'beheer\FaqController@show');

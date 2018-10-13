@@ -6,11 +6,9 @@ Route::get('/faq', 'FaqController@index');
 Route::get('/actievelotingen', 'DrawController@index');
 Route::get('/cookies', 'HomeController@cookies');
 
-
-Route::get('/store', 'CategoriesController@index')->name('store'); //  /store contains main categories
-Route::get('/store/{id}/{slug}', 'subCategoriesController@index'); // /id/slug gets sub categories that belong to $id
-Route::get('/products/{id}/{slug}', 'ProductController@show'); // /product/id/slug gets products that belong to that category
-//Route::get('/beheer/producten', 'ControlPanelController@products');
+Route::get('/store', 'CategoriesController@index')->name('store');
+Route::get('/store/{id}/{slug}', 'subCategoriesController@index');
+Route::get('/products/{id}/{slug}', 'ProductController@show');
 
 Route::POST('/products/search', 'ProductController@search');
 

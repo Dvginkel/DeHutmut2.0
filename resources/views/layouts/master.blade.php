@@ -29,8 +29,7 @@
   <!--<script src="../js/bugReport.js" ></script>-->
   <!-- <script src="../js/misc.js" ></script> -->
   <script src="{{ URL::asset('js/misc.js') }}"></script>
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
-  />
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
   <script>
     window.addEventListener("load", function () {
@@ -52,7 +51,7 @@
           "dismiss": "Begrepen",
           "deny": "Weigeren",
           "link": "Meer info",
-          "href": "https://dev.dehutmut.nl/cookies"
+          "href": "https://hutmut.test/cookies"
         }
       })
     });
@@ -62,12 +61,12 @@
 <body>
 
   @include('layouts.navbar')
+
   <main role="main">
-    <div class="container mt-10" id="logo">
+    <div class="div-sm-12" id="logo">
       <img src="https://www.dehutmut.nl//images/hutmutlogo_klein.png" class="img-fluid rounded mx-auto d-block">
     </div>
-    <br>
-    <div class="er">
+    <div class="error">
       @include('messages.success') @include('messages.error') @include('messages.warning')
     </div>
 
