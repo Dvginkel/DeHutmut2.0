@@ -37,14 +37,13 @@ class ProductController extends Controller
 
         // Filter out products where user has a draw on.
         $user = auth()->user();
-        #dd($user->draws->id);
-        $connectedProductIds = $user->tickets->pluck('draw_id')->toArray();
-
+        $userTickets = $user->tickets->pluck('draw_id')->toArray();
+        $connectedProductIds = Draw::whereIn('id', $userTickets)->pluck('product_id')->toArray();
         $products = Product::whereNotIn('id', $connectedProductIds)
         ->where('cat_id', '=', $id)
         ->where('active', '=', 1)
         ->paginate(10);
-
+        #dd($products);
         $sizes = Size::where('gender', '=', $id)->get();
 
         $colors = Product::select('color')->groupBy('color')->distinct()->where('color', '!=', '')->get();

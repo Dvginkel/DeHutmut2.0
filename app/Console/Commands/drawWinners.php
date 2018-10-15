@@ -8,6 +8,8 @@ use App\Ticket;
 use App\Draw;
 use Carbon\Carbon;
 use App\User;
+use App\Product;
+use \App\Mail\DrawWon;
 
 class drawWinners extends Command
 {
@@ -45,48 +47,38 @@ class drawWinners extends Command
         // Current Date and Time
         $currdt = Carbon::now();
         // Get expired draws
-        $expiredDraws  = Draw::where('einde_loting', '<', $currdt)->get();
+        //$expiredDraws  = Draw::where('einde_loting', '<', $currdt)->get();
+        $expiredDraws  = Draw::with('tickets')->where('einde_loting', '<=', $currdt)->get();
 
-        //echo $expiredDraws;
-        // Get tickets for each draw
-        foreach($expiredDraws as $draw)
+        foreach($expiredDraws as $expiredDraw)
         {
-            $draw_id = $draw->id;
-            $userId = Ticket::where('draw_id', '=', $draw_id)->pluck('user_id')->toArray();
-            
-            // Draw a single winner for each draw
-            $winner = array_rand($userId, 1);
+            $drawProductId = $expiredDraw->product_id;
+            $productInfo = Product::findOrFail($drawProductId);
+            $numberOfTickets = count($expiredDraw->tickets);
+            $tickets = $expiredDraw->tickets;
+            $productNaam = Product::findOrFail($drawProductId);
 
-            $userInfo = User::where('id', $winner)->pluck('name')->toArray();
-            var_dump($userInfo);
-            
-           
+            if($numberOfTickets == 1)
+            {
+                $array = json_decode($tickets, true);
+                $one_item = $array[rand(0, count($array) - 1)];
+                $winnerUserId = $one_item['user_id'];
+                
+            } else {
+                $array = json_decode($tickets, true);
+                $one_item = $array[rand(0, count($array) - 1)];
+                $winnerUserId = $one_item['user_id'];
+
+                $user = User::findOrFail($winnerUserId);
+                                
+                \Mail::to($user)->send(new DrawWon($user, $productInfo));   
+            }
         }
-      
+        //echo $expiredDraws;
 
-
+        
         // Notify user of winning
 
-        // notify admins of winning
-
-        
-       
-        
-        //echo $expiredDraws;
-
-        foreach($expiredDraws as $draw)
-        {
-            
-            // $userTickets = $draw->ticket;
-            
-            
-            // foreach($userTickets as $test)
-            // {
-            //     echo $test;
-            // }
-        }
-         
-
-                       
+        // notify admins of winning 
     }
 }

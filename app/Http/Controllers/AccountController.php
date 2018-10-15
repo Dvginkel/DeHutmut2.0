@@ -49,12 +49,13 @@ class AccountController extends Controller
 
     public function afspraak()
     {
-        $userId = Auth()->user()->id;
+        $userId = Auth()->User()->id;
+                
         $gewonnenProducten = Winners::where('user_id', '=', $userId)
         ->join('products', 'products.id', '=', 'winners.product_id')
         ->select('products.name as productname', 'winners.*')
         ->get();
-        //dd($gewonnenProducten);
+        dd($gewonnenProducten);
         return view('account.afspraak', compact('gewonnenProducten'));
     }
 

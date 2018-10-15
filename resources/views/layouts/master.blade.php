@@ -66,7 +66,7 @@
     <div class="div-sm-12" id="logo">
       <img src="https://www.dehutmut.nl//images/hutmutlogo_klein.png" class="img-fluid rounded mx-auto d-block">
     </div>
-    <div class="error">
+    <div class="error div-sm-12">
       @include('messages.success') @include('messages.error') @include('messages.warning')
     </div>
 
