@@ -3,7 +3,8 @@
 
 Beste {{ $user->name }},
 @component('mail::panel', ['url' => ''])
-    Je hebt 1 of meerdere loting(en) gewonnen, maak binnen 12 uur een afspraak met Doreth van Dam
+    Je hebt 1 of meerdere loting(en) gewonnen maak binnen 12 uur een afspraak.
+    <br><br>Met onderstaande knop kan je een afspraak maken met Doreth van Dam.
     @component('mail::button', ['url' => 'http://hutmut.test:8000/account/afspraak'])
     Maak ophaal afspraak met Doreth van Dam
     @endcomponent

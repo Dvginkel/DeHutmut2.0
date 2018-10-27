@@ -51,12 +51,17 @@ class AccountController extends Controller
     {
         $userId = Auth()->User()->id;
                 
+        
         $gewonnenProducten = Winners::where('user_id', '=', $userId)
         ->join('products', 'products.id', '=', 'winners.product_id')
-        ->select('products.name as productname', 'winners.*')
+        ->select('products.*', 'winners.*')
         ->get();
-        dd($gewonnenProducten);
-        return view('account.afspraak', compact('gewonnenProducten'));
+        #dd($gewonnenProducten);
+        foreach($gewonnenProducten as $gewonnenProduct)
+        {
+            $test[] = $gewonnenProduct->product_id;
+        }
+        return view('account.afspraak', compact('gewonnenProducten', 'test'));
     }
 
     public function tickets()

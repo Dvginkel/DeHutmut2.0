@@ -43,6 +43,7 @@
         {{Auth()->user()->name}}
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/account/afspraak">Mijn Afspraken</a>
         <a class="dropdown-item" href="/account/tickets">Mijn Lotingen</a>
         <a class="dropdown-item" href="/account/info">Mijn Gegevens</a>
         <a class="dropdown-item" href="/account/inbox">Mijn Inbox</a>
