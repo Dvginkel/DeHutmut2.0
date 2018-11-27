@@ -18,7 +18,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/faq">FAQ</a>
       </li>
-      <div class="dropdown-divider"></div>
       <li class="nav-item">
         <a class="nav-link" href="/store">De Winkel</a>
       </li>
@@ -37,7 +36,7 @@
       </li>
     </ul>
     @else
-    <div class="nav-item dropdown ml-auto">
+    <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         {{Auth()->user()->name}}

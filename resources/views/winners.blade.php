@@ -1,8 +1,17 @@
 @extends('layouts.master') @section('content')
 
+<script>
+  $(document).ready(function () {
+    $('[data-rel=popover]').popover({
+      html: true,
+      trigger: "hover"
+    });
+  })
+</script>
+
 <div class="row">
-  <div class="col-md-12" id="welcomeMessage">
-    <h1>Meest Recent Winnaars</h1>
+  <div class="col-md-12 mt-3" id="welcomeMessage">
+    <h1>Winnaars</h1>
     <p>Overzicht van de meest recente winnaars</p>
   </div>
   <div class="table-responsive">
@@ -18,7 +27,17 @@
         @foreach($winners as $winner)
         <tr>
           <td>{{ $winner->username }}</td>
-          <td>{{ $winner->productname }}</td>
+
+          <td> <a class="btn btn-primary btn-block" data-toggle="collapse" href="#{{ $winner->id }}" role="button"
+              aria-expanded="false" aria-controls="#{{ $winner->id }}">
+              {{ $winner->productname }}
+            </a>
+            <div class="collapse" id="{{ $winner->id }}">
+              <div class="card card-body">
+                <img src='{{ $winner->photo }}' width=100% height=100%>
+              </div>
+            </div>
+          </td>
           <td>{{ $winner->gewonnenop($winner->created_at) }}</td>
         </tr>
         @endforeach
