@@ -1,16 +1,6 @@
  @extends('beheer.master') @section('content')
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item ">
-            <p class="btn btn-primary">Beheer</p>
-        </li>
-        <li class="breadcrumb-item">
-            <a href="/beheer/users/" class="btn btn-primary">Users</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">{{ $user->name }}</li>
-    </ol>
-</nav>
-<div class="container">
+
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-12">
             <div class="contrainer">

@@ -40,7 +40,7 @@
                         </div>
                         <input type="hidden" name="id" id="faqId" value="{{ $faq->id }}">
                         <button type="submit" class="btn btn-primary pull-right mb-3">Wijzigingen Opslaan</button>
-                        <a href="/beheer/faq/{{ $faq->id }}/delete" class="btn btn-primary" role="button">Verwijderen</a>
+                        <a href="/beheer/faq/{{ $faq->id }}/delete" class="btn btn-primary pull-right mb-3" role="button">Verwijderen</a>
                     </form>
                     <script src="../../../js/beheer/faq.js"></script>
                 </div>

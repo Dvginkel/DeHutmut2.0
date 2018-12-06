@@ -1,7 +1,7 @@
 @extends('beheer.master')
 
 @section('content')
-<main role="main">
+<main role="main" class="mt-5">
    @include('beheer.categories.add')
    
 </main>

@@ -1,6 +1,6 @@
 @extends('beheer.master') @section('content')
 
-<div class="container">
+<div class="container mt-5">
     @include('beheer.faq.add')
 </div>
 <hr>
