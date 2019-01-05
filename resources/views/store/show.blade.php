@@ -1,16 +1,16 @@
- @extends('layouts.master') @section('content')
+@extends('layouts.master') @section('content')
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
 
-        <div class="col-md-12 ">
+        <div class="col-md-12 mt-1 ml-auto mr-auto">
             <h1>De Hutmut Winkel </h1>
         </div>
-       
-        {{ $subCategories }}
+
+        
         <div class=" col-md-12 ml-auto mr-auto">
         </div>
-        
+
         <br> @if($subCategories->isEmpty())
         <p> Geen sub Categorieen gevonden</p>
 
@@ -23,13 +23,13 @@
                     <p class="card-text">{{ $subCategorie->description }}</p>
                     <a href="/products/{{$subCategorie->id}}/{{$subCategorie->slug}}" class="btn mtn-md btn-primary btn-block">
                         <span class="badge badge-success">
-                            @php 
+                            @php
                             $user = auth()->user();
                             $connectedProductIds = $user->tickets->pluck('draw_id')->toArray();
-                                $products = App\Product::whereNotIn('id', $connectedProductIds)
-                                ->where('cat_id', '=', $subCategorie->id)
-                                ->where('active', '=', 1)
-                                ->count();
+                            $products = App\Product::whereNotIn('id', $connectedProductIds)
+                            ->where('cat_id', '=', $subCategorie->id)
+                            ->where('active', '=', 1)
+                            ->count();
                             @endphp
 
                             {{ $products }}

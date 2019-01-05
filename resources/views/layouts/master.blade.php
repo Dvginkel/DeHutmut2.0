@@ -51,7 +51,7 @@
           "dismiss": "Begrepen",
           "deny": "Weigeren",
           "link": "Meer info",
-          "href": "https://hutmut.test/cookies"
+          "href": "https://hutmut.test:44300/cookies"
         }
       })
     });
@@ -64,10 +64,12 @@
 
   <main role="main">
     <div class="div-sm-12" id="logo">
-      <img src="https://www.dehutmut.nl//images/hutmutlogo_klein.png" class="img-fluid rounded mx-auto d-block">
+      <img src="https://www.dehutmut.nl/images/hutmutlogo_klein.png" class="img-fluid mx-auto d-block">
     </div>
     <div class="error div-sm-12">
-      @include('messages.success') @include('messages.error') @include('messages.warning')
+      @include('messages.success') 
+      @include('messages.error') 
+      @include('messages.warning')
     </div>
 
     <div class="container" id="content">

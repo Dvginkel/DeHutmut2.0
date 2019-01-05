@@ -1,5 +1,5 @@
 <footer class="container ml-auto mr-auto mt-3">
-  <div>&copy; De Hutmut 2017-2018</div>
+  <div>&copy; De Hutmut 2017-<?php echo date('Y');?></div>
 </footer>
 
 <!-- Bootstrap core JavaScript

@@ -35,35 +35,30 @@ class TicketController extends Controller
         $user_id = Auth()->user()->id;
         $product_id = request('product_id');
         //$productName = Product::where('id', '=', $product_id)->first();
-        $productName = Product::where('id', '=', $product_id)->pluck('name')->first(); 
+        $productName = Product::where('id', '=', $product_id)->pluck('name')->first();
         $eindelotingDT = Carbon::now()->addHours(24);
 
         // Check if there is an active draw for $product_i
         $drawExists = Draw::where('product_id', $product_id)->first();
         
-        if($drawExists)
-        {
+        if ($drawExists) {
             // Draw exists no need to create a new entry
             // Check if user has a ticket for $product_id
 
             $userTicketExists = Ticket::where('user_id', $user_id)->where('draw_id', $drawExists->id)->first();
             #dd($userTicketExists);
 
-            if($userTicketExists === null)
-            {
+            if ($userTicketExists === null) {
                 $newUserTicket = Ticket::create([
                     'user_id' => $user_id,
                     'draw_id' => $drawExists->id,
                 ]);
                # return $newUserTicket;
-               #return redirect()->action('CategoriesController@index')->with('success', 'Je loot mee op '. $productName); 
-               return redirect()->back()->with('success', 'Je loot mee op '. $productName);   
+                return redirect()->back()->with('success', 'Je loot mee op '. $productName);
             } else {
                 // User also has a ticket for $product_id
-                return redirect()->action('CategoriesController@index')->with('success', 'Je hebt al een lootje op '. $productName);        
+                return redirect()->action('CategoriesController@index')->with('success', 'Je hebt al een lootje op '. $productName);
             }
-
-           
         } else {
             // Nieuwe Loting aanmaken
             $newDraw = Draw::create([
@@ -79,10 +74,8 @@ class TicketController extends Controller
                 'user_id' => $user_id,
                 'draw_id' => $draw_id,
             ]);
-            return redirect()->action('CategoriesController@index')->with('success', 'Je loot mee op '. $productName);  
+            return redirect()->action('CategoriesController@index')->with('success', 'Je loot mee op '. $productName);
         }
-        
-      
     }
     
     public function getActiveTickets()
