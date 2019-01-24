@@ -6,7 +6,7 @@ Route::get('/faq', 'FaqController@index');
 Route::get('/actievelotingen', 'DrawController@index');
 Route::get('/cookies', 'HomeController@cookies');
 
-Route::get('/store', 'CategoriesController@index')->name('store');
+Route::get('store', 'CategoriesController@index');
 Route::get('/store/{id}/{slug}', 'subCategoriesController@index');
 Route::get('/products/{id}/{slug}', 'ProductController@show');
 

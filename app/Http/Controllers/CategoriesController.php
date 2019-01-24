@@ -17,6 +17,9 @@ class CategoriesController extends Controller
 
     public function index()
     {
+
+
+
         $mainCategories = Categories::with('subCategories')
         ->orderBy('name', 'ASC')
         ->withCount('subCategories')

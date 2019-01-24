@@ -1,14 +1,5 @@
 @extends('layouts.master') @section('content')
 
-<style>
-.catTitle {
-  height: 50px;
-  width: 100%;
-  background-color: magenta;
-  text-align: center;
-  padding-top:10px;
-}
-</style>
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
