@@ -13,6 +13,7 @@ use App\Winners;
 use App\Draw;
 use App\User;
 use App\Appointments;
+use App\Ticket;
 
 class AccountController extends Controller
 {
@@ -48,23 +49,27 @@ class AccountController extends Controller
 
     public function afspraak()
     {
-        $userId = Auth()->user()->id;
+        $userId = Auth()->User()->id;
+                
+        
         $gewonnenProducten = Winners::where('user_id', '=', $userId)
         ->join('products', 'products.id', '=', 'winners.product_id')
-        ->select('products.name as productname', 'winners.*')
+        ->select('products.*', 'winners.*')
         ->get();
-        //dd($gewonnenProducten);
-        return view('account.afspraak', compact('gewonnenProducten'));
+        #dd($gewonnenProducten);
+        foreach($gewonnenProducten as $gewonnenProduct)
+        {
+            $test[] = $gewonnenProduct->product_id;
+        }
+        return view('account.afspraak', compact('gewonnenProducten', 'test'));
     }
 
     public function tickets()
     {
-        $activeTickets =  draw::where('user_id', '=', auth()->user()->id)
-        ->join('products', 'products.id', '=', 'draws.product_id')
-        ->where('draws.active', '=', 1)
-        ->select('draws.*', 'products.name as product_name')
-        ->get();
-        return view('account.tickets', compact('activeTickets'));
+        $activeTickets =  Ticket::where('user_id', '=', auth()->user()->id)->get();
+
+        
+        //return view('account.tickets', compact('activeTickets'));
     }
 
     public function update(Request $request)
@@ -86,7 +91,8 @@ class AccountController extends Controller
     {
         //$messages = Appointments::where("to_user_id", auth()->user()->id)->get();
         $messages = Appointments::with('user')->where('to_user_id', auth()->user()->id)->get();
+        $users = User::all();
         //return $messages;
-        return view('account.inbox', compact('messages'));
+        return view('account.inbox', compact('messages', 'users'));
     }
 }

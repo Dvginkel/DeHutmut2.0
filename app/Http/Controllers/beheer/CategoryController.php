@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Categories;
 use App\subCategories;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Carbon;
 
 class CategoryController extends Controller
 {
@@ -17,8 +19,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Categories::all();
-        return view('beheer.categories.index', compact('categories'));
+        $categories1 = Categories::pluck('name', 'description', 'id');
+        return view('beheer.categories.index', compact('categories', 'categories1'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -27,14 +31,29 @@ class CategoryController extends Controller
      */
     public function create(Request $request)
     {
-        $catNameToSlug = strtolower($request->catName);
+        $categoryName = $request->name;
+        $categoryDescription = $request->description;
+
+        $currentDT = Carbon\Carbon::now()->format('d_M_Y_H_i_s');
+
+        if ($request->hasFile('photo')) {
+            if ($request->file('photo')->isValid()) {
+                $path = $request->file('photo')->storeAs('public/store/categories/',  '' .$categoryName. '_'.$currentDT.'.jpg');
+                $categoryCoverImage = str_replace('public','storage', $path);
+            } 
+        } else {
+            $categoryCoverImage = "storage/store/noimage.png";
+            // Notify developer / designer. An image has to be created for added category.
+        }
+       
+        $catNameToSlug = strtolower($categoryName);
         $slug = str_replace(" ", '', $catNameToSlug);
 
         $category = new Categories;
-        $category->name = $request->catName;
+        $category->name = $categoryName;
         $category->slug = $slug;
-        $category->description = $request->catDescription;
-        $category->photo = '/storage/store/noimage.png';
+        $category->description = $categoryDescription;
+        $category->photo = $categoryCoverImage;
         $category->active = 1;
         $test = $category->save();
 
@@ -44,63 +63,41 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store Sub Category.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        # dd(request());
-        $catType = request('CatType');
-        $belongsToCat = request('belongsToCat');
-        $catName = request('catName');
-        $catDescription = request('catDescription');
+       #dd($request);
+        $categoryName = $request->name;
+        $catDescription = $request->description;
+        $belongsToCat = $request->manCatId;
+        $currentDT = Carbon\Carbon::now()->format('d_M_Y_H_i_s');
 
-        // Check what we have to add new cat or sub cat
-        if ($catType === "subCat") {
-            // Add new Category to existing main categorie
-            subCategories::create([
-                'name' => $catName,
-                'description' => $catDescription,
-                'slug' => strtolower($catName),
-                'photo' => '/storage/store/noimage.png',
-                'active' => '1',
-                'categories_id' => $belongsToCat
-            ]);
-
-            // New category has been added, add a todo for me
-            // Get Main Cat Name
-            $mainCatName = Categories::find($belongsToCat)->first();
-            Todo::create([
-                'title' => "Categorie afbeelding toevoegen",
-                'user_id' => 1,
-                'description' => 'Voor de subcategorie: ' . $catName. ' in '.$mainCatName->name .' moet een afbeelding komen.',
-                'priority' => "normaal",
-                'completed' => 0,
-            ]);
-            return Redirect::to('beheer/categories');
+        if ($request->hasFile('subCatPhoto')) {
+            if ($request->file('subCatPhoto')->isValid()) {
+                $path = $request->file('subCatPhoto')->storeAs('public/store/categories/',  '' .$categoryName. '_'.$currentDT.'.jpg');
+                $categoryCoverImage = str_replace('public','/storage', $path);
+            } 
         } else {
-            // Create a New Parent Category
-            Categories::create([
-                'name' => $catName,
-                'slug' => strtolower($catName),
-                'description' => $catDescription,
-                'photo' => '/storage/store/noimage.png',
-                'active' => '1',
-            ]);
-            // New category has been added, add a todo for me
-            // Get Main Cat Name
-
-            Todo::create([
-                'title' => "Categorie afbeelding toevoegen",
-                'user_id' => 1,
-                'description' => 'Voor de categorie: ' . $catName. ' moet een afbeelding komen.',
-                'priority' => "normaal",
-                'completed' => 0,
-            ]);
-            return Redirect::to('beheer/categories');
+            $categoryCoverImage = "/storage/store/noimage.png";
+            // Notify developer / designer. An image has to be created for added category.
         }
+      
+        // Add new Category to existing main categorie
+        subCategories::create([
+            'name' => $categoryName,
+            'description' => $catDescription,
+            'slug' => strtolower($categoryName),
+            'photo' => $categoryCoverImage,
+            'active' => '1',
+            'categories_id' => $belongsToCat
+        ]);
+
+        return redirect()->action('beheer\CategoryController@index')->with('success', 'Sub Categorie is toegevoegd.');
+
     }
 
     /**

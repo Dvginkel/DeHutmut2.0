@@ -8,16 +8,19 @@ use Illuminate\Notifications\Notifiable;
 use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
+use Illuminate\Auth\Authenticatable as AuthenticatableContract;
+
 use App\Draw;
 use Socialite;
 use FCM;
 use App\Appointment;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use \Cache;
+use App\Model;
 
-
-
-class User extends Authenticatable
+class User extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 {
+    use AuthenticatableContract;
     use Notifiable;
     use SoftDeletes;
 
@@ -42,7 +45,7 @@ class User extends Authenticatable
 
     public function draws()
     {
-        return $this->belongsToMany(Draw::class, 'draw_product');
+        return $this->hasMany(Ticket::class);
     }
 
     public function todo()
@@ -106,5 +109,18 @@ class User extends Authenticatable
     public function inbox()
     {
         return $this->hasMany(Appointments::class);
+    }
+
+    public function isOnline()
+    {
+        //return Cache::has('user-is-online-' . $this->id);
+        $test = Cache::has('user-is-online-' . $this->id);
+
+        return $test;
+    }
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

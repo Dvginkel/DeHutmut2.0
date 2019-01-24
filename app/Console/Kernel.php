@@ -4,6 +4,10 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Carbon\Carbon;
+use App\Ticket;
+use App\Draw;
+use App\User;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,9 +28,41 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        
+
+         // the call method
         $schedule->call(function () {
-            DB::table('recent_users')->delete();
-        })->everyFifteenMinutes();
+            $currdt = Carbon::now();
+
+            // Get expired tickets
+            $tickets = \App\Ticket::select('product_id', 'einde_loting')
+            ->where('einde_loting', '<', $currdt)
+            ->get();
+
+            foreach($tickets as $ticket)
+            {
+                // Get users who have a draw on expired ticket
+                $users = Draw::where('product_id', $ticket->product_id)
+                
+                ->get();
+
+                // Pick a random winner
+                $test = array_rand($users, 1);
+
+                echo $test;
+
+                // foreach($users as $user)
+                // {
+                //     // Random draw a 
+                //     //echo "             ". $user->user_id;
+
+                //     $userInfo = User::find($user->user_id);
+
+                //     echo $userInfo->name. "        ";
+                // }
+            }
+
+        })->everyMinute();
     }
 
     /**

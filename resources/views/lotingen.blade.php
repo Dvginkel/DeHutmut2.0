@@ -15,19 +15,20 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($activeTickets as $ticket)
+        
+        @foreach($activeDraws as $draw)
         <tr>
-          <td>{{ $ticket->name }}</td>
-          <td>{{ $ticket->einde_loting }}</td>
+          <td>{{ $draw->product->name }}</td>
+          <td>{{ $draw->einde_loting }}</td>
           <td class="mr-auto ml-auto">
-            @if(in_array($ticket->product_id, $connectedProductIds))
+            @if(in_array($draw->id, $activeUserTickets))
             <small>
               Je hebt al een lootje op dit product
             </small>
             @else
             <form method="post" action="/ticket">
               {{ csrf_field() }}
-              <input type="hidden" name="product_id" value="{{ $ticket->product_id}}">
+              <input type="hidden" name="product_id" value="{{ $draw->product_id}}">
               <input type="submit" name="register" class="mt-auto mb-auto btn btn-sm btn-primary btn-block" value="Vraag Lootje">
             </form>
             @endif

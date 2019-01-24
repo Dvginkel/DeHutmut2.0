@@ -26,21 +26,27 @@ class FaqController extends Controller
     }
     public function update(Request $request)
     {
-        #return $request;
+        //return $request;
         $question = $request->question;
         $anwser = $request->anwser;
 
-        $updateFaq = Faq::where('id', '=', $request->faqId)->update([
+        $updateFaq = Faq::where('id', '=', $request->id)->update([
             'question' => $question,
             'anwser' => $anwser,
         ]);
-        return redirect()->action('beheer\FaqController@index')->with('status', 'FAQ is gewijzigd!');
+        //return $updateFaq;
+        if($updateFaq)
+        {
+            return redirect()->action('beheer\FaqController@index')->with('success', 'FAQ is gewijzigd!');
+        }
+        
     }
 
     public function delete($id)
     {
+        //return $id;
         $deletedRows = Faq::where('id', $id)->delete();
-        return redirect()->action('beheer\FaqController@index')->with('status', 'Vraag is verwijderd!');
+        return redirect()->action('beheer\FaqController@index')->with('success', 'Vraag is verwijderd!');
     }
     public function restore(Request $request, $id)
     {

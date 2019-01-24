@@ -15,6 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        
         //$this->middleware('auth');
         $this->middleware('auth')->except(['welcome']);
     }
@@ -37,8 +38,14 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $user  = Auth()->user();
         $posts = Post::orderBy('created_at', 'desc')
-        ->paginate(5);
-        return view('layouts.welcome', compact('posts'));
+        ->simplePaginate(5);
+        return view('layouts.welcome', compact('posts', 'user'));
+    }
+
+    public function cookies()
+    {
+        return view('layouts.cookies');
     }
 }

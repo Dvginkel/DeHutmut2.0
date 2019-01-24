@@ -24,7 +24,13 @@ class WinnersController extends Controller
     {
         $winners = Winners::join('users', 'users.id', '=', 'winners.user_id')
             ->join('products', 'products.id', '=', 'winners.product_id')
-            ->select('winners.created_at', 'users.name as username', 'products.name as productname')
+            ->select(
+                'winners.created_at',
+                'users.name as username',
+                'products.name as productname',
+                'products.photo',
+                'products.*'
+            )
             ->get();
         return view('winners', compact('winners'));
     }

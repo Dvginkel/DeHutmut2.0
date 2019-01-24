@@ -12,13 +12,12 @@
       aria-controls="collapseExample">
       {{ $faq->question }}
     </button>
-    <br>
-    <div class="collapse" id="{{ $faq->id }}">
-      <div class="card card-body">
+    <div class="collapse mb-3" id="{{ $faq->id }}">
+      <div class="card card-body bg-light">
         {{ $faq->anwser }}
       </div>
     </div>
-
+<br>
     @endforeach
   </div>
 </div>

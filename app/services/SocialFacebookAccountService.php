@@ -32,10 +32,13 @@ class SocialFacebookAccountService
                 ]);
             }
 
+            // $providerUser->avatar_original <--- User's Facebook Profile Picture URL.
+
             $account->user()->associate($user);
             $account->save();
-
             return $user;
         }
+            
+            
     }
 }

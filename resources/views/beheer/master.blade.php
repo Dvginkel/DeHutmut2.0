@@ -51,27 +51,15 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/beheer/products">
-            <span data-feather="file"></span>
-            Producten
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/beheer/categories">
             <span data-feather="file"></span>
             Categorieen
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/beheer/winners">
-            <span data-feather="shopping-cart"></span>
-            Winnaars
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/beheer/todo">
-            <span data-feather="todo"></span>
-            ToDo
+          <a class="nav-link" href="/beheer/faq">
+            <span data-feather="users"></span>
+            FAQ
           </a>
         </li>
         <li class="nav-item">
@@ -87,11 +75,24 @@
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/beheer/faq">
-              <span data-feather="users"></span>
-              FAQ
-            </a>
-          </li>
+          <a class="nav-link" href="/beheer/products">
+            <span data-feather="file"></span>
+            Producten
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/beheer/todo">
+            <span data-feather="todo"></span>
+            ToDo
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/beheer/winners">
+            <span data-feather="shopping-cart"></span>
+            Winnaars
+          </a>
+        </li>
+
       </ul>
     </div>
   </nav>
@@ -99,13 +100,10 @@
   <br>
 
   <div class="container-fluid">
-      @include('messages.success')
-      @include('messages.error')
-      @include('messages.warning')
-      
+    @include('messages.success') @include('messages.error') @include('messages.warning')
+
     <div class="row">
       <main role="main" class="col-md-12 ml-sm-auto col-lg-12 px-4">
-
         @yield('content')
       </main>
     </div>

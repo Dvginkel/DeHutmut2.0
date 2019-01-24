@@ -1,30 +1,38 @@
-@extends('beheer.master') @section('content')
-<meta name="csrf-token" content="{{ csrf_token() }}"> @if(!empty($category))
-<form method="post" action="/beheer/categories/{{$category->id}}">
-    @csrf
-    <div class="form-group">
-        <span class="input-group-addon">
-            <img src="{{ $category->photo }}" name="photo" id="photo" class="img-fluid rounded mx-auto d-block" alt="{{ $category->name}}">
-        </span>
-    </div>
-    <div class="form-group">
-        <label for="categorieName">Categorie naam</label>
-        <input type="text" class="form-control" id="categorieName" aria-describedby="categorieName" name="name" value="{{ $category->name}}">
-    </div>
-    <div class="form-group">
-        <label for="categoryDescription">Omschrijving</label>
-        <input type="text" class="form-control" id="categoryDescription" aria-describedby="categoryDescription" name="description"
-            value="{{ $category->description}}">
-    </div>
-    <div class="form-group mb-3">
-        <input id="categoryActive" class="form-input" name="active" type="checkbox" value="{{ $category->id }}" @if($category->active == 1) checked=checked @endif >
-        <label id="lblActive" class="form-check-label" for="categoryActive">Categorie Actief</label>
-        <small>
-            <br>
-            <strong>Als vinkje uitstaat, Is de categorie uitgeschakeld.</strong>
-        </small>
-    </div>
+<div class="container">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#editCategory">
+        Categorie Wijzigen
+    </button>
 
-    <button type="submit" class="btn btn-primary pull-right mb-5">Wijzigingen Opslaan</button>
-</form>
-@endif @endsection
+    <!-- Modal -->
+    <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Hoofd Categorie Aanpassen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body bg-light">
+                        {{  Form::model($categories1, array('route' => array('categories.edit', 1))) }}
+                        
+
+                        {{ Form::label('name', 'Kies Categorie') }}
+                        {!! Form::select('name', $categories1, null, ['class' => 'form-control']) !!}
+                    
+                        {{ Form::label('name', 'Categorie Naam') }}
+                        {{ Form::text('name', '', array('class' => 'form-control')) }}
+                        {{ Form::label('name', 'Categorie Omschrijving') }}
+                        {{ Form::text('description', '', array('class' => 'form-control')) }}
+                        {{ Form::label('photo', 'Afbeelding van Categorie') }}
+                        {{ Form::file('photo', ['class' => 'form-control ']) }}
+                        {{ Form::submit('Opslaan', array('class' => 'mt-3 btn btn-primary btn-block')) }}
+                        {{ Form::button('Annuleren', array('class' => 'btn btn-primary btn-block', 'data-target' => '#editCategory', 'data-toggle' => 'modal')) }}
+
+                        {{ Form::close() }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

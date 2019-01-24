@@ -15,8 +15,8 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
-            $table->string('einde_loting');
+            $table->integer('user_id');
+            $table->integer('draw_id');
             $table->integer('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

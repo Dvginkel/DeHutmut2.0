@@ -3,6 +3,9 @@
 namespace App;
 
 use App\Model;
+use App\Draw;
+use App\Product;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -13,5 +16,15 @@ class Ticket extends Model
     public function eindeLoting($value)
     {
         return $value->format('d-m-Y H:i:s');
+    }
+
+    public function draw()
+    {
+       return $this->hasMany(Draw::class, 'id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }

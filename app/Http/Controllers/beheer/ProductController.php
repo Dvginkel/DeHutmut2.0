@@ -10,9 +10,18 @@ use App\User;
 use App\Categories;
 use App\subCategories;
 use \Storage;
+use Session;
+use Redirect;
 
 class ProductController extends Controller
 {
+    /**
+     *  Code to restore deleted_at rows
+     *  $products = Product::withTrashed()
+        ->where('active', 1)
+        ->restore();
+     */
+
     /**
      * Display a listing of the resource.
      *
@@ -21,15 +30,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $request->user()->authorizeRoles(['Beheerder']);
+        $products = Product::where('products.active',1)
+        ->select('products.*')
+        ->simplePaginate(50);
 
-        //$products = Product::paginate(25);
-        $products = Product::join('sub_categories', 'products.cat_id', '=', 'sub_categories.id')
-        ->select('products.*', 'sub_categories.name as catName')
-        ->paginate(150);
-        #return $products;
-        $categories = Categories::all();
-
-
+        $categories = Categories::with('subCategories')->get();
+       
         return view('beheer.products.index', compact('products', 'categories'));
     }
 
@@ -71,10 +77,9 @@ class ProductController extends Controller
                 'cat_id' => $cat_id,
                 'photo' => '/storage/products/'. $fileName,
                 'active' => 1,
-
             ]);
-            //return redirect('/beheer/products')->with('status', 'Product is toegevoegd!');
-            return redirect()->action('beheer\ProductController@index')->with('status', 'Product is toegevoegd!.');
+            
+            return redirect()->action('beheer\ProductController@index')->with('success', 'Product is toegevoegd!.');
         }
     }
 
@@ -114,12 +119,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::findOrFail($id);
-        $categorieName = subCategories::find($product->cat_id);
-        //return $categorieName->name;
-        $catTests = Categories::with('subCategories')->get();
-        //dd($catTest);
-        return view('beheer.products.edit', compact('product', 'catTests', 'categorieName'));
+        $product = Product::find($id);
+        return view('beheer.products.edit', compact('product'));
     }
 
     /**
@@ -129,36 +130,39 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        #return $request;
-        $product_number = $request->productNumber;
-        $name = $request->productName;
-        $description = $request->productDescription;
-        $size =  $request->productSize;
-        $color = $request->productColor;
+        
+            // store
+            $nerd = Product::find($id);
+            $nerd->name     = request()->name;
+            $nerd->description = request()->description;
+            $nerd->color    = request()->color;
+            $nerd->size     = request()->size;
+            $nerd->age      = request()->age;
+            $nerd->cat_id   = request()->cat_id;
+            $nerd->photo    = request()->photo;
+            $nerd->active   = request()->active;
+            $nerd->save();
+
+            // redirect
+            return redirect()->action('beheer\ProductController@index')->with('success', 'Product is gewijzigd!.');
+        
+        
+        //return $request;
+        //$product_number = $request->productNumber;
+        $name = $request->name;
+        $description = $request->description;
+        $size =  $request->size;
+        $color = $request->color;
         if ($size <= 68) {
-            $ageTmp = str_replace("Maanden", "", $request->productAge);
+            $ageTmp = str_replace("Maanden", "", $request->age);
             $age = $ageTmp;
         } else {
-            $ageTmp = str_replace("Jaar", "", $request->productAge);
+            $ageTmp = str_replace("Jaar", "", $request->age);
             $age = $ageTmp;
         }
-        $updateRecord = Product::findOrFail($id);
-        $getCatIdByName = $request->productCategorie;
-        #dd($getCatIdByName);
-        $cat_id = subCategories::where('name', '=', $getCatIdByName)->pluck('id')->first();
-        #dd($cat_id);
-
-        $updateRecord->product_number = $product_number;
-        $updateRecord->name = $name;
-        $updateRecord->description = $description;
-        $updateRecord->size = $size;
-        $updateRecord->color = $color;
-        $updateRecord->age = $age;
-        $updateRecord->cat_id = $cat_id;
-        $updateRecord->save();
-        #dd($updateRecord);
+        
         return redirect()->action('beheer\ProductController@index')->with('status', 'Product is gewijzigd.');
     }
 

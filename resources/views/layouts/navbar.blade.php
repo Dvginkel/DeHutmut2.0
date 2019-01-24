@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="/">De Hutmut</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
@@ -12,23 +12,22 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <div class="dropdown-divider"></div>
-      <li class="nav-item">
-        <a class="nav-link" href="/store">De Winkel</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/winnaars">Winnaars</a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="/actievelotingen">Actieve Lotingen</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/faq">FAQ</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/store">De Winkel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/winnaars">Winnaars</a>
+      </li>
       <div class="dropdown-divider"></div>
     </ul>
     @guest
-    <ul class="navbar-nav ml-auto">
+   <ul class="navbar-nav ml-auto">
       <li>
         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
       </li>
@@ -37,12 +36,13 @@
       </li>
     </ul>
     @else
-    <div class="nav-item dropdown ml-auto">
+    <div class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         {{Auth()->user()->name}}
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="/account/afspraak">Mijn Afspraken</a>
         <a class="dropdown-item" href="/account/tickets">Mijn Lotingen</a>
         <a class="dropdown-item" href="/account/info">Mijn Gegevens</a>
         <a class="dropdown-item" href="/account/inbox">Mijn Inbox</a>

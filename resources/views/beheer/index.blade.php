@@ -7,8 +7,12 @@
       <h2>Gebruik het menu om een keuze te maken</h2>
       <p>Met behulp van het menu kan je o.a. de volgende dingen doen. </p>
       <ul>
-        <li>Producten Beheren</li>
+        <li>Categorieen en Sub categorieen Beheren</li>
+        <li>Veel gestelde vragen Beheren</li>
         <li>Gebruikers Beheren</li>
+        <li>Nieuwsberichten Beheren</li>
+        <li>Producten Beheren</li>
+        <li>ToDo's Beheren</li>
         <li>Winnaars Beheren</li>
       </ul>
     </div>

@@ -26,26 +26,61 @@
         </div>
         @endif
         <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Product</th>
-                    <th scope="col">Gewonnen</th>
-                    <th scope="col">Afspraak maken</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ $gewonnenProduct->productname }}</td>
-                    <td>{{ $gewonnenProduct->created_at->format('d-m-Y H:i:s') }}</td>
-                    <td>
+        
+            @php
+                $count = count($gewonnenProducten)
+            @endphp
+
+            @if($count === 1)
+                @foreach($gewonnenProducten as $gewonnenProduct)
+               
+                <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{$gewonnenProduct->photo}}" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ $gewonnenProduct->productname }}</h5>
+                        <p class="card-text">Gewonnen op: {{ $gewonnenProduct->created_at->format('d-m-Y H:i:s') }}.</p>
+                        <form method="POST" action="/account/afspraak">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="{{ $gewonnenProduct->product_id}}">
+                                    <button class="btn btn-primary">Afspraak Maken</button>
+                        </form>
+                    </div>
+                </div>
+                
+                       
+                        
+                           
+                        
+                    
+                @endforeach
+                @else 
+                
+                @foreach($gewonnenProducten as $gewonnenProduct)
+                <div class="card mb-1" width="25%">
+                <img class="card-img-top" src=" {{ $gewonnenProduct->photo }}" alt="{{ $gewonnenProduct->productname }}">
+                    <div class="card-body">
+                        <h5 class="card-title"> {{ $gewonnenProduct->productname }}</h5>
+                        <p class="card-text">Gewonnen op: {{ $gewonnenProduct->created_at->format('d-m-Y H:i:s') }}.</p>
+                        <form method="POST" action="/account/afspraak">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="{{ $gewonnenProduct->product_id}}">
+                                    <button class="btn btn-primary">Afspraak Maken</button>
+                        </form>
+                    </div>
+                </div>
+                
+                @endforeach
+                   <div class="ml-auto mr-auto">
                         <form method="POST" action="/account/afspraak">
                             {{ csrf_field() }}
-                            <input type="hidden" name="product_id" value="{{ $gewonnenProduct->product_id}}">
-                            <button class="btn btn-primary">Afspraak Maken</button>
-                    </td>
-                    </form>
-                </tr>
+                            @foreach($test as $item)
+                                <input type="hidden" name="product_id[]" value="{{  $item }}">
+                            @endforeach
+                            <button class="btn btn-primary">Afspraak voor alles</button>
+                        </form>
+                    </div>
+            @endif
+
             </tbody>
         </table>
 
